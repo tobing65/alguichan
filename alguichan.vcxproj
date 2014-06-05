@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="LIB Debug|Win32">
+      <Configuration>LIB Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="LIB Release|Win32">
+      <Configuration>LIB Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{0E53C89A-787F-41C7-B06C-8F54A65A397D}</ProjectGuid>
+    <RootNamespace>alguichan</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='LIB Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='LIB Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='LIB Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='LIB Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.40219.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='LIB Debug|Win32'">./lib\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='LIB Debug|Win32'">./obj/msvc/dbg\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='LIB Release|Win32'">./lib\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='LIB Release|Win32'">./obj/msvc/opt\</IntDir>
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='LIB Debug|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='LIB Debug|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='LIB Debug|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='LIB Release|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='LIB Release|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='LIB Release|Win32'" />
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='LIB Debug|Win32'">$(ProjectName)_sd</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='LIB Release|Win32'">$(ProjectName)_sr</TargetName>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='LIB Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;DEBUGMODE=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <ProgramDataBaseFileName>$(TargetDir)/$(TargetName).pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <TreatWarningAsError>true</TreatWarningAsError>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)$(ProjectName)_sd.lib</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='LIB Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <ForceConformanceInForLoopScope>true</ForceConformanceInForLoopScope>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <ProgramDataBaseFileName>$(TargetDir)/$(TargetName).pdb</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <TreatWarningAsError>true</TreatWarningAsError>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)$(ProjectName)_sr.lib</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="guichan\actionevent.cpp" />
+    <ClCompile Include="guichan\basiccontainer.cpp" />
+    <ClCompile Include="guichan\cliprectangle.cpp" />
+    <ClCompile Include="guichan\color.cpp" />
+    <ClCompile Include="guichan\containerevent.cpp" />
+    <ClCompile Include="guichan\defaultfont.cpp" />
+    <ClCompile Include="guichan\defaultstyle.cpp" />
+    <ClCompile Include="guichan\event.cpp" />
+    <ClCompile Include="guichan\exception.cpp" />
+    <ClCompile Include="guichan\focushandler.cpp" />
+    <ClCompile Include="guichan\font.cpp" />
+    <ClCompile Include="guichan\genericinput.cpp" />
+    <ClCompile Include="guichan\graphics.cpp" />
+    <ClCompile Include="guichan\gui.cpp" />
+    <ClCompile Include="guichan\guichan.cpp" />
+    <ClCompile Include="guichan\image.cpp" />
+    <ClCompile Include="guichan\imagefont.cpp" />
+    <ClCompile Include="guichan\inputevent.cpp" />
+    <ClCompile Include="guichan\key.cpp" />
+    <ClCompile Include="guichan\keyevent.cpp" />
+    <ClCompile Include="guichan\keyinput.cpp" />
+    <ClCompile Include="guichan\mouseevent.cpp" />
+    <ClCompile Include="guichan\mouseinput.cpp" />
+    <ClCompile Include="guichan\rectangle.cpp" />
+    <ClCompile Include="guichan\selectionevent.cpp" />
+    <ClCompile Include="guichan\style.cpp" />
+    <ClCompile Include="guichan\widget.cpp" />
+    <ClCompile Include="guichan\widgets\button.cpp" />
+    <ClCompile Include="guichan\widgets\buttonbar.cpp" />
+    <ClCompile Include="guichan\widgets\checkbox.cpp" />
+    <ClCompile Include="guichan\widgets\container.cpp" />
+    <ClCompile Include="guichan\widgets\dropdown.cpp" />
+    <ClCompile Include="guichan\widgets\icon.cpp" />
+    <ClCompile Include="guichan\widgets\imagebutton.cpp" />
+    <ClCompile Include="guichan\widgets\label.cpp" />
+    <ClCompile Include="guichan\widgets\listbox.cpp" />
+    <ClCompile Include="guichan\widgets\radiobutton.cpp" />
+    <ClCompile Include="guichan\widgets\scrollarea.cpp" />
+    <ClCompile Include="guichan\widgets\slider.cpp" />
+    <ClCompile Include="guichan\widgets\tab.cpp" />
+    <ClCompile Include="guichan\widgets\tabbedarea.cpp" />
+    <ClCompile Include="guichan\widgets\textbox.cpp" />
+    <ClCompile Include="guichan\widgets\textfield.cpp" />
+    <ClCompile Include="guichan\widgets\window.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="guichan\actionevent.hpp" />
+    <ClInclude Include="guichan\actionlistener.hpp" />
+    <ClInclude Include="guichan\basiccontainer.hpp" />
+    <ClInclude Include="guichan\cliprectangle.hpp" />
+    <ClInclude Include="guichan\color.hpp" />
+    <ClInclude Include="guichan\containerevent.hpp" />
+    <ClInclude Include="guichan\containerlistener.hpp" />
+    <ClInclude Include="guichan\deathlistener.hpp" />
+    <ClInclude Include="guichan\defaultfont.hpp" />
+    <ClInclude Include="guichan\defaultstyle.hpp" />
+    <ClInclude Include="guichan\event.hpp" />
+    <ClInclude Include="guichan\exception.hpp" />
+    <ClInclude Include="guichan\focushandler.hpp" />
+    <ClInclude Include="guichan\focuslistener.hpp" />
+    <ClInclude Include="guichan\font.hpp" />
+    <ClInclude Include="guichan\genericinput.hpp" />
+    <ClInclude Include="guichan\graphics.hpp" />
+    <ClInclude Include="guichan\gui.hpp" />
+    <ClInclude Include="guichan\image.hpp" />
+    <ClInclude Include="guichan\imagefont.hpp" />
+    <ClInclude Include="guichan\imageloader.hpp" />
+    <ClInclude Include="guichan\input.hpp" />
+    <ClInclude Include="guichan\inputevent.hpp" />
+    <ClInclude Include="guichan\key.hpp" />
+    <ClInclude Include="guichan\keyevent.hpp" />
+    <ClInclude Include="guichan\keyinput.hpp" />
+    <ClInclude Include="guichan\keylistener.hpp" />
+    <ClInclude Include="guichan\listmodel.hpp" />
+    <ClInclude Include="guichan\mouseevent.hpp" />
+    <ClInclude Include="guichan\mouseinput.hpp" />
+    <ClInclude Include="guichan\mouselistener.hpp" />
+    <ClInclude Include="guichan\platform.hpp" />
+    <ClInclude Include="guichan\rectangle.hpp" />
+    <ClInclude Include="guichan\selectionevent.hpp" />
+    <ClInclude Include="guichan\selectionlistener.hpp" />
+    <ClInclude Include="guichan\style.hpp" />
+    <ClInclude Include="guichan\widget.hpp" />
+    <ClInclude Include="guichan\widgetlistener.hpp" />
+    <ClInclude Include="guichan\widgets\button.hpp" />
+    <ClInclude Include="guichan\widgets\buttonbar.hpp" />
+    <ClInclude Include="guichan\widgets\checkbox.hpp" />
+    <ClInclude Include="guichan\widgets\container.hpp" />
+    <ClInclude Include="guichan\widgets\dropdown.hpp" />
+    <ClInclude Include="guichan\widgets\icon.hpp" />
+    <ClInclude Include="guichan\widgets\imagebutton.hpp" />
+    <ClInclude Include="guichan\widgets\label.hpp" />
+    <ClInclude Include="guichan\widgets\listbox.hpp" />
+    <ClInclude Include="guichan\widgets\radiobutton.hpp" />
+    <ClInclude Include="guichan\widgets\scrollarea.hpp" />
+    <ClInclude Include="guichan\widgets\slider.hpp" />
+    <ClInclude Include="guichan\widgets\tab.hpp" />
+    <ClInclude Include="guichan\widgets\tabbedarea.hpp" />
+    <ClInclude Include="guichan\widgets\textbox.hpp" />
+    <ClInclude Include="guichan\widgets\textfield.hpp" />
+    <ClInclude Include="guichan\widgets\window.hpp" />
+    <ClInclude Include="alguichan.hpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

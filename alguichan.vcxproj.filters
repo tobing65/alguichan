@@ -1,0 +1,313 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="guichan">
+      <UniqueIdentifier>{4c3b59fb-9483-4573-b7dc-9c085f7c0b31}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="guichan\widgets">
+      <UniqueIdentifier>{01e66caf-6ce2-4489-9c91-216ca3c8129b}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="guichan\actionevent.cpp">
+      <Filter>guichan</Filter>
+    </ClCompile>
+    <ClCompile Include="guichan\basiccontainer.cpp">
+      <Filter>guichan</Filter>
+    </ClCompile>
+    <ClCompile Include="guichan\cliprectangle.cpp">
+      <Filter>guichan</Filter>
+    </ClCompile>
+    <ClCompile Include="guichan\color.cpp">
+      <Filter>guichan</Filter>
+    </ClCompile>
+    <ClCompile Include="guichan\containerevent.cpp">
+      <Filter>guichan</Filter>
+    </ClCompile>
+    <ClCompile Include="guichan\defaultfont.cpp">
+      <Filter>guichan</Filter>
+    </ClCompile>
+    <ClCompile Include="guichan\defaultstyle.cpp">
+      <Filter>guichan</Filter>
+    </ClCompile>
+    <ClCompile Include="guichan\event.cpp">
+      <Filter>guichan</Filter>
+    </ClCompile>
+    <ClCompile Include="guichan\exception.cpp">
+      <Filter>guichan</Filter>
+    </ClCompile>
+    <ClCompile Include="guichan\focushandler.cpp">
+      <Filter>guichan</Filter>
+    </ClCompile>
+    <ClCompile Include="guichan\font.cpp">
+      <Filter>guichan</Filter>
+    </ClCompile>
+    <ClCompile Include="guichan\genericinput.cpp">
+      <Filter>guichan</Filter>
+    </ClCompile>
+    <ClCompile Include="guichan\graphics.cpp">
+      <Filter>guichan</Filter>
+    </ClCompile>
+    <ClCompile Include="guichan\gui.cpp">
+      <Filter>guichan</Filter>
+    </ClCompile>
+    <ClCompile Include="guichan\guichan.cpp">
+      <Filter>guichan</Filter>
+    </ClCompile>
+    <ClCompile Include="guichan\image.cpp">
+      <Filter>guichan</Filter>
+    </ClCompile>
+    <ClCompile Include="guichan\imagefont.cpp">
+      <Filter>guichan</Filter>
+    </ClCompile>
+    <ClCompile Include="guichan\inputevent.cpp">
+      <Filter>guichan</Filter>
+    </ClCompile>
+    <ClCompile Include="guichan\key.cpp">
+      <Filter>guichan</Filter>
+    </ClCompile>
+    <ClCompile Include="guichan\keyevent.cpp">
+      <Filter>guichan</Filter>
+    </ClCompile>
+    <ClCompile Include="guichan\keyinput.cpp">
+      <Filter>guichan</Filter>
+    </ClCompile>
+    <ClCompile Include="guichan\mouseevent.cpp">
+      <Filter>guichan</Filter>
+    </ClCompile>
+    <ClCompile Include="guichan\mouseinput.cpp">
+      <Filter>guichan</Filter>
+    </ClCompile>
+    <ClCompile Include="guichan\rectangle.cpp">
+      <Filter>guichan</Filter>
+    </ClCompile>
+    <ClCompile Include="guichan\selectionevent.cpp">
+      <Filter>guichan</Filter>
+    </ClCompile>
+    <ClCompile Include="guichan\style.cpp">
+      <Filter>guichan</Filter>
+    </ClCompile>
+    <ClCompile Include="guichan\widget.cpp">
+      <Filter>guichan</Filter>
+    </ClCompile>
+    <ClCompile Include="guichan\widgets\button.cpp">
+      <Filter>guichan\widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="guichan\widgets\buttonbar.cpp">
+      <Filter>guichan\widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="guichan\widgets\checkbox.cpp">
+      <Filter>guichan\widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="guichan\widgets\container.cpp">
+      <Filter>guichan\widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="guichan\widgets\dropdown.cpp">
+      <Filter>guichan\widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="guichan\widgets\icon.cpp">
+      <Filter>guichan\widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="guichan\widgets\imagebutton.cpp">
+      <Filter>guichan\widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="guichan\widgets\label.cpp">
+      <Filter>guichan\widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="guichan\widgets\listbox.cpp">
+      <Filter>guichan\widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="guichan\widgets\radiobutton.cpp">
+      <Filter>guichan\widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="guichan\widgets\scrollarea.cpp">
+      <Filter>guichan\widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="guichan\widgets\slider.cpp">
+      <Filter>guichan\widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="guichan\widgets\tab.cpp">
+      <Filter>guichan\widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="guichan\widgets\tabbedarea.cpp">
+      <Filter>guichan\widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="guichan\widgets\textbox.cpp">
+      <Filter>guichan\widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="guichan\widgets\textfield.cpp">
+      <Filter>guichan\widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="guichan\widgets\window.cpp">
+      <Filter>guichan\widgets</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="guichan\actionevent.hpp">
+      <Filter>guichan</Filter>
+    </ClInclude>
+    <ClInclude Include="guichan\actionlistener.hpp">
+      <Filter>guichan</Filter>
+    </ClInclude>
+    <ClInclude Include="guichan\basiccontainer.hpp">
+      <Filter>guichan</Filter>
+    </ClInclude>
+    <ClInclude Include="guichan\cliprectangle.hpp">
+      <Filter>guichan</Filter>
+    </ClInclude>
+    <ClInclude Include="guichan\color.hpp">
+      <Filter>guichan</Filter>
+    </ClInclude>
+    <ClInclude Include="guichan\containerevent.hpp">
+      <Filter>guichan</Filter>
+    </ClInclude>
+    <ClInclude Include="guichan\containerlistener.hpp">
+      <Filter>guichan</Filter>
+    </ClInclude>
+    <ClInclude Include="guichan\deathlistener.hpp">
+      <Filter>guichan</Filter>
+    </ClInclude>
+    <ClInclude Include="guichan\defaultfont.hpp">
+      <Filter>guichan</Filter>
+    </ClInclude>
+    <ClInclude Include="guichan\defaultstyle.hpp">
+      <Filter>guichan</Filter>
+    </ClInclude>
+    <ClInclude Include="guichan\event.hpp">
+      <Filter>guichan</Filter>
+    </ClInclude>
+    <ClInclude Include="guichan\exception.hpp">
+      <Filter>guichan</Filter>
+    </ClInclude>
+    <ClInclude Include="guichan\focushandler.hpp">
+      <Filter>guichan</Filter>
+    </ClInclude>
+    <ClInclude Include="guichan\focuslistener.hpp">
+      <Filter>guichan</Filter>
+    </ClInclude>
+    <ClInclude Include="guichan\font.hpp">
+      <Filter>guichan</Filter>
+    </ClInclude>
+    <ClInclude Include="guichan\genericinput.hpp">
+      <Filter>guichan</Filter>
+    </ClInclude>
+    <ClInclude Include="guichan\graphics.hpp">
+      <Filter>guichan</Filter>
+    </ClInclude>
+    <ClInclude Include="guichan\gui.hpp">
+      <Filter>guichan</Filter>
+    </ClInclude>
+    <ClInclude Include="guichan\image.hpp">
+      <Filter>guichan</Filter>
+    </ClInclude>
+    <ClInclude Include="guichan\imagefont.hpp">
+      <Filter>guichan</Filter>
+    </ClInclude>
+    <ClInclude Include="guichan\imageloader.hpp">
+      <Filter>guichan</Filter>
+    </ClInclude>
+    <ClInclude Include="guichan\input.hpp">
+      <Filter>guichan</Filter>
+    </ClInclude>
+    <ClInclude Include="guichan\inputevent.hpp">
+      <Filter>guichan</Filter>
+    </ClInclude>
+    <ClInclude Include="guichan\key.hpp">
+      <Filter>guichan</Filter>
+    </ClInclude>
+    <ClInclude Include="guichan\keyevent.hpp">
+      <Filter>guichan</Filter>
+    </ClInclude>
+    <ClInclude Include="guichan\keyinput.hpp">
+      <Filter>guichan</Filter>
+    </ClInclude>
+    <ClInclude Include="guichan\keylistener.hpp">
+      <Filter>guichan</Filter>
+    </ClInclude>
+    <ClInclude Include="guichan\listmodel.hpp">
+      <Filter>guichan</Filter>
+    </ClInclude>
+    <ClInclude Include="guichan\mouseevent.hpp">
+      <Filter>guichan</Filter>
+    </ClInclude>
+    <ClInclude Include="guichan\mouseinput.hpp">
+      <Filter>guichan</Filter>
+    </ClInclude>
+    <ClInclude Include="guichan\mouselistener.hpp">
+      <Filter>guichan</Filter>
+    </ClInclude>
+    <ClInclude Include="guichan\platform.hpp">
+      <Filter>guichan</Filter>
+    </ClInclude>
+    <ClInclude Include="guichan\rectangle.hpp">
+      <Filter>guichan</Filter>
+    </ClInclude>
+    <ClInclude Include="guichan\selectionevent.hpp">
+      <Filter>guichan</Filter>
+    </ClInclude>
+    <ClInclude Include="guichan\selectionlistener.hpp">
+      <Filter>guichan</Filter>
+    </ClInclude>
+    <ClInclude Include="guichan\style.hpp">
+      <Filter>guichan</Filter>
+    </ClInclude>
+    <ClInclude Include="guichan\widget.hpp">
+      <Filter>guichan</Filter>
+    </ClInclude>
+    <ClInclude Include="guichan\widgetlistener.hpp">
+      <Filter>guichan</Filter>
+    </ClInclude>
+    <ClInclude Include="guichan\widgets\button.hpp">
+      <Filter>guichan\widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="guichan\widgets\buttonbar.hpp">
+      <Filter>guichan\widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="guichan\widgets\checkbox.hpp">
+      <Filter>guichan\widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="guichan\widgets\container.hpp">
+      <Filter>guichan\widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="guichan\widgets\dropdown.hpp">
+      <Filter>guichan\widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="guichan\widgets\icon.hpp">
+      <Filter>guichan\widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="guichan\widgets\imagebutton.hpp">
+      <Filter>guichan\widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="guichan\widgets\label.hpp">
+      <Filter>guichan\widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="guichan\widgets\listbox.hpp">
+      <Filter>guichan\widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="guichan\widgets\radiobutton.hpp">
+      <Filter>guichan\widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="guichan\widgets\scrollarea.hpp">
+      <Filter>guichan\widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="guichan\widgets\slider.hpp">
+      <Filter>guichan\widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="guichan\widgets\tab.hpp">
+      <Filter>guichan\widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="guichan\widgets\tabbedarea.hpp">
+      <Filter>guichan\widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="guichan\widgets\textbox.hpp">
+      <Filter>guichan\widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="guichan\widgets\textfield.hpp">
+      <Filter>guichan\widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="guichan\widgets\window.hpp">
+      <Filter>guichan\widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="alguichan.hpp" />
+  </ItemGroup>
+</Project>

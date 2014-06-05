@@ -1,0 +1,7 @@
+*.user
+*.exe
+*.pdb
+allegro.log
+*/obj/*
+lib/*
+obj/*
