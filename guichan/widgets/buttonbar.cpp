@@ -98,8 +98,8 @@ void ButtonVBar::setWidth(int width)
 void ButtonVBar::adjustSizeAndButtons(ButtonBarAdjustMode show_invisible_and_disabled)
 {
     WidgetListIterator iter;
-    int max_width=0;
-    int cur_y=border_spacing_;
+    int max_width = 0;
+    int cur_y = 0;
     for (iter = mWidgets.begin(); iter != mWidgets.end(); iter++)
     {
         Widget*pw = *iter;
@@ -173,12 +173,20 @@ void ButtonVBar::adjustSizeAndButtons(ButtonBarAdjustMode show_invisible_and_dis
         const int cur_width = pw->getWidth();
         if(max_width < cur_width)
             max_width = cur_width;
-        pw->setPosition(border_spacing_,cur_y);
+        pw->setPosition(border_spacing_,cur_y+border_spacing_);
         cur_y += pw->getHeight();
         cur_y += int_spacing_;
     }
-    setWidth(max_width+2*border_spacing_);
-    setHeight(cur_y);
+    if(cur_y > 0)
+    {
+        setWidth(max_width+2*border_spacing_);
+        setHeight(cur_y-int_spacing_+2*border_spacing_);
+    }
+    else // this means that there are no contained widgets
+    {
+        setWidth(0);
+        setHeight(0);
+    }
 }
 
 //----------------------------------------------------------------------------
@@ -219,8 +227,8 @@ void ButtonHBar::setHeight(int height)
 void ButtonHBar::adjustSizeAndButtons(ButtonBarAdjustMode show_invisible_and_disabled)
 {
     WidgetListIterator iter;
-    int max_height=0;
-    int cur_x=0;
+    int max_height = 0;
+    int cur_x = 0;
     for (iter = mWidgets.begin(); iter != mWidgets.end(); iter++)
     {
         Widget*pw = *iter;
@@ -279,12 +287,20 @@ void ButtonHBar::adjustSizeAndButtons(ButtonBarAdjustMode show_invisible_and_dis
         const int cur_height = pw->getHeight();
         if(max_height < cur_height)
             max_height = cur_height;
-        pw->setPosition(cur_x,border_spacing_);
+        pw->setPosition(cur_x+border_spacing_, border_spacing_);
         cur_x += int_spacing_;
         cur_x += pw->getWidth();
     }
-    setWidth(cur_x);
-    setHeight(max_height+2*border_spacing_);
+    if(cur_x > 0)
+    {
+        setWidth(cur_x-int_spacing_+2*border_spacing_);
+        setHeight(max_height+2*border_spacing_);
+    }
+    else // this means that there are no contained widgets
+    {
+        setWidth(0);
+        setHeight(0);
+    }
 }
 
 //----------------------------------------------------------------------------
