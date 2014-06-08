@@ -91,13 +91,22 @@ namespace gcn
         void setSpacing(unsigned int int_sp, unsigned int border_sp);
 
         /**
+        Set spacing to be used during adjustment.
+        @param int_sp spacing between children
+        @param border_width_sp spacing between children and border left and right
+        @param border_height_sp spacing between children and border top and bottom
+        */
+        void setSpacing(unsigned int int_sp, unsigned int border_width_sp, unsigned int border_height_sp);
+
+        /**
         Set width of all child widgets recursively.
         */
         void setWidth(int width);
 
     private:
-        unsigned char int_spacing_;
-        unsigned char border_spacing_;
+        unsigned short int_spacing_;
+        unsigned short border_w_spacing_;
+        unsigned short border_h_spacing_;
     };
 
     //----------------------------------------------------------------------------
@@ -128,13 +137,22 @@ namespace gcn
         void setSpacing(unsigned int int_sp, unsigned int border_sp);
 
         /**
+        Set spacing to be used during adjustment.
+        @param int_sp spacing between children
+        @param border_width_sp spacing between children and border left and right
+        @param border_height_sp spacing between children and border top and bottom
+        */
+        void setSpacing(unsigned int int_sp, unsigned int border_width_sp, unsigned int border_height_sp);
+
+        /**
         Set Height of all child widgets recursively.
         */
         void setHeight(int height);
 
     private:
         unsigned char int_spacing_;
-        unsigned char border_spacing_;
+        unsigned char border_w_spacing_;
+        unsigned char border_h_spacing_;
     };
 
     //----------------------------------------------------------------------------

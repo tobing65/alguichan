@@ -64,15 +64,24 @@ using namespace gcn;
 
 ButtonVBar::ButtonVBar()
 : int_spacing_(1)
-, border_spacing_(0)
+, border_w_spacing_(0)
+, border_h_spacing_(0)
 {
     setOpaque(false);
 }
 
 void ButtonVBar::setSpacing(unsigned int int_sp, unsigned int border_sp)
 {
-    int_spacing_=int_sp;
-    border_spacing_=border_sp;
+    int_spacing_ = int_sp;
+    border_w_spacing_ = border_sp;
+    border_h_spacing_ = border_sp;
+}
+
+void ButtonVBar::setSpacing(unsigned int int_sp, unsigned int border_width_sp, unsigned int border_height_sp)
+{
+    int_spacing_ = int_sp;
+    border_w_spacing_ = border_width_sp;
+    border_h_spacing_ = border_height_sp;
 }
 
 void ButtonVBar::setWidth(int width)
@@ -85,11 +94,11 @@ void ButtonVBar::setWidth(int width)
         ButtonVBar* pb = dynamic_cast<ButtonVBar*>(pw);
         if(pb)
         {
-            pb->setWidth(width - 2*border_spacing_);
+            pb->setWidth(width - 2*border_w_spacing_);
         }
         else
         {
-            pw->setWidth(width - 2*border_spacing_);
+            pw->setWidth(width - 2*border_h_spacing_);
         }
     }
     Container::setWidth(width);
@@ -173,14 +182,14 @@ void ButtonVBar::adjustSizeAndButtons(ButtonBarAdjustMode show_invisible_and_dis
         const int cur_width = pw->getWidth();
         if(max_width < cur_width)
             max_width = cur_width;
-        pw->setPosition(border_spacing_,cur_y+border_spacing_);
+        pw->setPosition(border_w_spacing_,cur_y+border_h_spacing_);
         cur_y += pw->getHeight();
         cur_y += int_spacing_;
     }
     if(cur_y > 0)
     {
-        setWidth(max_width+2*border_spacing_);
-        setHeight(cur_y-int_spacing_+2*border_spacing_);
+        setWidth(max_width+2*border_w_spacing_);
+        setHeight(cur_y-int_spacing_+2*border_h_spacing_);
     }
     else // this means that there are no contained widgets
     {
@@ -193,15 +202,24 @@ void ButtonVBar::adjustSizeAndButtons(ButtonBarAdjustMode show_invisible_and_dis
 
 ButtonHBar::ButtonHBar()
 : int_spacing_(1)
-, border_spacing_(0)
+, border_w_spacing_(0)
+, border_h_spacing_(0)
 {
     setOpaque(false);
 }
 
 void ButtonHBar::setSpacing(unsigned int int_sp, unsigned int border_sp)
 {
-    int_spacing_=int_sp;
-    border_spacing_=border_sp;
+    int_spacing_ = int_sp;
+    border_w_spacing_ = border_sp;
+    border_h_spacing_ = border_sp;
+}
+
+void ButtonHBar::setSpacing(unsigned int int_sp, unsigned int border_width_sp, unsigned int border_height_sp)
+{
+    int_spacing_ = int_sp;
+    border_w_spacing_ = border_width_sp;
+    border_h_spacing_ = border_height_sp;
 }
 
 void ButtonHBar::setHeight(int height)
@@ -214,11 +232,11 @@ void ButtonHBar::setHeight(int height)
         ButtonHBar* pb = dynamic_cast<ButtonHBar*>(pw);
         if(pb)
         {
-            pb->setHeight(height - 2*border_spacing_);
+            pb->setHeight(height - 2*border_w_spacing_);
         }
         else
         {
-            pw->setHeight(height - 2*border_spacing_);
+            pw->setHeight(height - 2*border_h_spacing_);
         }
     }
     Container::setHeight(height);
@@ -287,14 +305,14 @@ void ButtonHBar::adjustSizeAndButtons(ButtonBarAdjustMode show_invisible_and_dis
         const int cur_height = pw->getHeight();
         if(max_height < cur_height)
             max_height = cur_height;
-        pw->setPosition(cur_x+border_spacing_, border_spacing_);
+        pw->setPosition(cur_x+border_w_spacing_, border_h_spacing_);
         cur_x += int_spacing_;
         cur_x += pw->getWidth();
     }
     if(cur_x > 0)
     {
-        setWidth(cur_x-int_spacing_+2*border_spacing_);
-        setHeight(max_height+2*border_spacing_);
+        setWidth(cur_x-int_spacing_+2*border_w_spacing_);
+        setHeight(max_height+2*border_h_spacing_);
     }
     else // this means that there are no contained widgets
     {
