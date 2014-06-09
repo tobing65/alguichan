@@ -242,7 +242,12 @@ namespace gcn
         for(unsigned int i = 0; i < mTextRows.size(); i++)
         {
             // Move the text one pixel so we can have a caret before a letter.
-            graphics->drawText(mTextRows[i], 1, i * getFont()->getHeight());
+            if(!isEditable() && mAlignment == gcn::Graphics::Right)
+                graphics->drawText(mTextRows[i], getWidth(), i * getFont()->getHeight(), mAlignment);
+            else if(!isEditable() && mAlignment == gcn::Graphics::Center)
+                graphics->drawText(mTextRows[i], getWidth()/2, i * getFont()->getHeight(), mAlignment);
+            else
+                graphics->drawText(mTextRows[i], 1, i * getFont()->getHeight());
         }
     }
 
@@ -616,6 +621,16 @@ namespace gcn
     void TextBox::addRow(const std::string &row)
     {
         addRow(row.c_str());
+    }
+
+    void TextBox::setAlignment(Graphics::Alignment alignment)
+    {
+        mAlignment = alignment;
+    }
+
+    Graphics::Alignment TextBox::getAlignment() const
+    {
+        return mAlignment;
     }
 
     bool TextBox::isOpaque() const

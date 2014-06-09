@@ -51,6 +51,7 @@
 #include <string>
 #include <vector>
 
+#include "guichan/graphics.hpp"
 #include "guichan/keylistener.hpp"
 #include "guichan/mouselistener.hpp"
 #include "guichan/platform.hpp"
@@ -240,6 +241,26 @@ namespace gcn
         virtual void addRow(const char* text);
 
         /**
+         * Sets the alignment of the text. The alignment is relative to the center of the widget.
+         *
+         * Note that the alignment has no effect if the TextBox is editable, because alignment is not implemented for the caret.
+         * So only if the TextBox is used as non-editable, the alignment has the desired effect.
+         *
+         * @param alignemnt The alignment of the text of the widget.
+         * @see getAlignment, Graphics
+         */
+        void setAlignment(Graphics::Alignment alignment);
+
+        /**
+         * Gets the alignment of the text. The alignment is relative to
+         * the center of the widget.
+         *
+         * @return The alignment of the text of the widget.
+         * @see setAlignmentm Graphics
+         */
+        Graphics::Alignment getAlignment() const;
+
+        /**
          * Checks if the text box is opaque. An opaque text box will draw
          * it's background and it's text. A non opaque text box only draw it's
          * text making it transparent.
@@ -308,6 +329,11 @@ namespace gcn
          * Holds the current row of the caret.
          */
         int mCaretRow;
+
+        /**
+         * Holds the alignment of the text.
+         */
+        Graphics::Alignment mAlignment;
 
         /**
          * True if the text box is editable, false otherwise.
