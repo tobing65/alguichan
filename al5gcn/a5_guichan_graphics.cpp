@@ -58,13 +58,15 @@
 
 using namespace gcn;
 
+static ALLEGRO_COLOR white = {1,1,1,1};
+
 Allegro5Graphics::Allegro5Graphics()
+    : mTintColor(white)
 {
 }
 
 Allegro5Graphics::~Allegro5Graphics()
 {
-
 }
 
 void Allegro5Graphics::_beginDraw()
@@ -118,7 +120,8 @@ void Allegro5Graphics::drawImage(const Image* image,
                                  int dstX,
                                  int dstY,
                                  int dstW,
-                                 int dstH)
+                                 int dstH,
+                                 float opacity)
 {
     if (mClipStack.empty())
     {
@@ -136,7 +139,8 @@ void Allegro5Graphics::drawImage(const Image* image,
         throw GCN_EXCEPTION("Trying to draw an image of unknown format, must be an Allegro5Image.");
     }
 
-    al_draw_scaled_bitmap(srcImage->getBitmap(),
+    mTintColor.a = opacity;
+    al_draw_tinted_scaled_bitmap(srcImage->getBitmap(), mTintColor,
         srcX, srcY, srcW, srcH,
         dstX + xOffset, dstY + yOffset, dstW, dstH,
         0

@@ -110,6 +110,8 @@ namespace gcn
         */
         unsigned int getSpacing() const;
 
+        void setOpaque(bool isOpaque);
+
 
         // Inherited from FocusListener
         virtual void focusLost(const Event& event);
@@ -165,6 +167,8 @@ namespace gcn
         */
         bool mMousePressed;
 
+        bool mIsOpaque;
+
         /**
         * Holds the alignment of the content.
         */
@@ -173,7 +177,7 @@ namespace gcn
         /**
         * Holds the spacing between the border and the content.
         */
-        unsigned int mSpacing;
+        unsigned short mSpacing;
     };
 
 

@@ -179,7 +179,7 @@ namespace gcn
          *       to draw the whole image there is a simplified version of
          *       this function.
          *
-         * EXAMPLE: @code drawImage(myImage, 10, 10, 20, 20, 40, 40); @endcode
+         * EXAMPLE: @code drawImage(myImage, 10, 10, 20, 20, 40, 40, 1.0); @endcode
          *          Will draw a rectangular piece of myImage starting at
          *          coordinate (10, 10) in myImage, with width and height 40.
          *          The piece will be drawn with it's top left corner at
@@ -192,6 +192,7 @@ namespace gcn
          * @param dstY The destination y coordinate.
          * @param width The width of the piece.
          * @param height The height of the piece.
+         * @param opacity is used as alpha for this image. 0 is transparent.
          */
         virtual void drawImage(const Image* image,
                                int srcX,
@@ -201,15 +202,16 @@ namespace gcn
                                int dstX,
                                int dstY,
                                int dstW,
-                               int dstH) = 0;
+                               int dstH,
+                               float opacity) = 0;
         /**
          * Draws an image. A simplified version of the other drawImage.
          * It will draw a whole image at the coordinate you specify.
          * It is equivalent to calling:
          * @code drawImage(myImage, 0, 0, dstX, dstY, image->getWidth(), \
-         image->getHeight()); @endcode
+         image->getHeight(), opacity); @endcode
          */
-        virtual void drawImage(const Image* image, int dstX, int dstY);
+        virtual void drawImage(const Image* image, int dstX, int dstY, float opacity);
 
         /**
          * Draws a single point/pixel.

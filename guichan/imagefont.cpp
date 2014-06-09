@@ -253,7 +253,8 @@ namespace gcn
                             x,
                             y + yoffset,
                             w,
-                            h);
+                            h,
+                            1.0);
 
         return mGlyph[glyph].width + mGlyphSpacing;
     }

@@ -96,11 +96,12 @@ namespace gcn
     {
         drawBox(graphics);
 
+        const Style*style = getStyle();
         graphics->setFont(getFont());
 
         Color textColor = getForegroundColor();
         if(!isEnabled())
-            textColor.a /= 2;
+            textColor.a *= style->getDisabledOpacity();
         graphics->setColor(textColor);
 
         const int h = getHeight() + getHeight() / 2;

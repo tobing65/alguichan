@@ -64,6 +64,7 @@ namespace gcn
         : mHasMouse(false)
         , mKeyPressed(false)
         , mMousePressed(false)
+        , mIsOpaque(true)
         , mAlignment(Graphics::Center)
         , mSpacing(4)
     {
@@ -93,6 +94,11 @@ namespace gcn
     unsigned int ButtonBase::getSpacing() const
     {
         return mSpacing;
+    }
+
+    void ButtonBase::setOpaque(bool isOpaque)
+    {
+        mIsOpaque = isOpaque;
     }
 
     bool ButtonBase::isPressed() const
@@ -254,35 +260,38 @@ namespace gcn
     void Button::draw(Graphics* graphics)
     {
         const Style*style = getStyle();
-        Color faceColor = getBaseColor();
-        Color highlightColor;
-        Color shadowColor;
-        if (isPressed())
+        if(mIsOpaque)
         {
-            faceColor = style->getActivatedColor(getBaseColor());
-            highlightColor = style->getShadowColor(faceColor);
-            shadowColor = style->getHighlightColor(faceColor);
+            Color faceColor = getBaseColor();
+            Color highlightColor;
+            Color shadowColor;
+            if (isPressed())
+            {
+                faceColor = style->getActivatedColor(getBaseColor());
+                highlightColor = style->getShadowColor(faceColor);
+                shadowColor = style->getHighlightColor(faceColor);
+            }
+            else
+            {
+                highlightColor = style->getHighlightColor(faceColor);
+                shadowColor = style->getShadowColor(faceColor);
+            }
+
+            graphics->setColor(faceColor);
+            graphics->fillRectangle(1, 1, getDimension().width-1, getHeight() - 1);
+
+            graphics->setColor(highlightColor);
+            graphics->drawLine(0, 0, getWidth() - 1, 0);
+            graphics->drawLine(0, 1, 0, getHeight() - 1);
+
+            graphics->setColor(shadowColor);
+            graphics->drawLine(getWidth() - 1, 1, getWidth() - 1, getHeight() - 1);
+            graphics->drawLine(1, getHeight() - 1, getWidth() - 1, getHeight() - 1);
         }
-        else
-        {
-            highlightColor = style->getHighlightColor(faceColor);
-            shadowColor = style->getShadowColor(faceColor);
-        }
-
-        graphics->setColor(faceColor);
-        graphics->fillRectangle(1, 1, getDimension().width-1, getHeight() - 1);
-
-        graphics->setColor(highlightColor);
-        graphics->drawLine(0, 0, getWidth() - 1, 0);
-        graphics->drawLine(0, 1, 0, getHeight() - 1);
-
-        graphics->setColor(shadowColor);
-        graphics->drawLine(getWidth() - 1, 1, getWidth() - 1, getHeight() - 1);
-        graphics->drawLine(1, getHeight() - 1, getWidth() - 1, getHeight() - 1);
 
         Color textColor = getForegroundColor();
         if(!isEnabled())
-            textColor.a /= 2;
+            textColor.a *= style->getDisabledOpacity();
         graphics->setColor(textColor);
 
         int textX;

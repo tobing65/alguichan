@@ -64,6 +64,8 @@ namespace gcn
         virtual Color getHighlightColor(const Color&) const = 0;
         virtual Color getDisabledColor(const Color&fgColor, const Color&bgColor) const = 0;
 
+        virtual float getDisabledOpacity() const = 0;
+
         virtual Color getDefaultForegroundColor() const = 0;
         virtual Color getDefaultBackgroundColor() const = 0;
         virtual Color getDefaultBaseColor() const = 0;

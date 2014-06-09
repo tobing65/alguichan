@@ -87,8 +87,8 @@ namespace gcn
 
     void ImageButton::draw(Graphics* graphics)
     {
-        Color faceColor = getBaseColor();
         const Style*style = getStyle();
+        Color faceColor = getBaseColor();
         Color highlightColor;
         Color shadowColor;
         if (isPressed())
@@ -103,18 +103,21 @@ namespace gcn
             shadowColor = style->getShadowColor(faceColor);
         }
 
-        graphics->setColor(faceColor);
-        graphics->fillRectangle(1, 1, getDimension().width - 1, getHeight() - 1);
+        if(mIsOpaque)
+        {
+            graphics->setColor(faceColor);
+            graphics->fillRectangle(1, 1, getDimension().width - 1, getHeight() - 1);
 
-        graphics->setColor(highlightColor);
-        graphics->drawLine(0, 0, getWidth() - 1, 0);
-        graphics->drawLine(0, 1, 0, getHeight() - 1);
+            graphics->setColor(highlightColor);
+            graphics->drawLine(0, 0, getWidth() - 1, 0);
+            graphics->drawLine(0, 1, 0, getHeight() - 1);
 
-        graphics->setColor(shadowColor);
-        graphics->drawLine(getWidth() - 1, 1, getWidth() - 1, getHeight() - 1);
-        graphics->drawLine(1, getHeight() - 1, getWidth() - 1, getHeight() - 1);
+            graphics->setColor(shadowColor);
+            graphics->drawLine(getWidth() - 1, 1, getWidth() - 1, getHeight() - 1);
+            graphics->drawLine(1, getHeight() - 1, getWidth() - 1, getHeight() - 1);
 
-        graphics->setColor(getForegroundColor());
+            graphics->setColor(getForegroundColor());
+        }
 
         const int textX = (getWidth() - (mImage ? mImage->getWidth() : 0) ) / 2;
         const int textY = (getHeight() - (mImage ? mImage->getHeight() : 0) ) / 2;
@@ -122,19 +125,12 @@ namespace gcn
         if (isPressed())
         {
             if(mImage)
-                graphics->drawImage(mImage, textX + 1, textY + 1);
+                graphics->drawImage(mImage, textX + 1, textY + 1, 1.0);
         }
         else
         {
             if(mImage)
-                graphics->drawImage(mImage, textX, textY);
-
-            if( !isEnabled() )
-            {
-                faceColor.a = 150;
-                graphics->setColor(faceColor);
-                graphics->fillRectangle(1, 1, getWidth()-1, getHeight()-1);
-            }
+                graphics->drawImage(mImage, textX, textY, this->isEnabled() ? (float)1.0 : style->getDisabledOpacity());
 
             if (isFocused())
             {

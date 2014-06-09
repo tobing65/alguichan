@@ -109,6 +109,11 @@ Color DefaultStyle::getDisabledColor(const Color&fgColor, const Color&bgColor) c
     return newColor;
 }
 
+float DefaultStyle::getDisabledOpacity() const
+{
+    return 0.5;
+}
+
 Color DefaultStyle::getDefaultForegroundColor() const
 {
     return Color(0,0,0);

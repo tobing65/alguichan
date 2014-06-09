@@ -110,7 +110,7 @@ namespace gcn
         drawBox(graphics);
         graphics->popClipArea();
 
-        
+        const Style*style = getStyle();
         graphics->setFont(getFont());
         graphics->setColor(getForegroundColor());
 
@@ -139,7 +139,7 @@ namespace gcn
 
         Color textColor = getForegroundColor();
         if(!isEnabled())
-            textColor.a /= 2;
+            textColor.a *= style->getDisabledOpacity();
         graphics->setColor(textColor);
 
         graphics->drawText(getCaption(), h - 2, 0);

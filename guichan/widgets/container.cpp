@@ -83,7 +83,7 @@ namespace gcn
             graphics->drawImage(mBackgroundImage
                 , 0, 0, mBackgroundImage->getWidth(), mBackgroundImage->getHeight()
                 , 0, 0, getWidth(), getHeight()
-                );
+                , 1.0);
         }
         else if (isOpaque())
         {

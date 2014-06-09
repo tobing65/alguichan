@@ -53,6 +53,7 @@
 #include "guichan/graphics.hpp"
 #include "guichan/image.hpp"
 #include "guichan/rectangle.hpp"
+#include "guichan/style.hpp"
 
 namespace gcn
 {
@@ -110,9 +111,10 @@ namespace gcn
     {
         if (mImage)
         {
+            const Style*style = getStyle();
             const int x = (getWidth() - mImage->getWidth()) / 2;
             const int y = (getHeight() - mImage->getHeight()) / 2;
-            graphics->drawImage(mImage, x, y);
+            graphics->drawImage(mImage, x, y, this->isEnabled() ? (float)1.0 : style->getDisabledOpacity());
         }
     }
 }

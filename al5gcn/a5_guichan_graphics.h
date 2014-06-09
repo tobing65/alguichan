@@ -57,7 +57,6 @@ namespace gcn
         using Graphics::drawImage;
 
         Allegro5Graphics();
-
         virtual ~Allegro5Graphics();
 
         const ALLEGRO_COLOR& getAllegroColor() const;
@@ -70,7 +69,7 @@ namespace gcn
         virtual bool pushClipArea(gcn::Rectangle area);
         virtual void popClipArea();
 
-        virtual void drawImage(const gcn::Image* image, int srcX, int srcY, int srcW, int srcH, int dstX, int dstY, int dstW, int dstH);
+        virtual void drawImage(const gcn::Image* image, int srcX, int srcY, int srcW, int srcH, int dstX, int dstY, int dstW, int dstH, float opacity);
 
         virtual void drawPoint(int x, int y);
 
@@ -85,6 +84,7 @@ namespace gcn
         virtual const Color& getColor() const;
 
     protected:
+        ALLEGRO_COLOR mTintColor;
         ALLEGRO_COLOR mAllegroColor;
         Color mColor;
     };

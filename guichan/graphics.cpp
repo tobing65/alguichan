@@ -122,11 +122,11 @@ namespace gcn
         return mClipStack.top();
     }
 
-    void Graphics::drawImage(const Image* image, int dstX, int dstY)
+    void Graphics::drawImage(const Image* image, int dstX, int dstY, float opacity)
     {
         const int w=image->getWidth();
         const int h=image->getHeight();
-        drawImage(image, 0, 0, w, h, dstX, dstY, w, h);
+        drawImage(image, 0, 0, w, h, dstX, dstY, w, h, opacity);
     }
 
     void Graphics::setFont(Font* font)
