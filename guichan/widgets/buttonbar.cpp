@@ -63,9 +63,9 @@ using namespace gcn;
 //----------------------------------------------------------------------------
 
 ButtonVBar::ButtonVBar()
-: int_spacing_(1)
-, border_w_spacing_(0)
-, border_h_spacing_(0)
+    : int_spacing_(1)
+    , border_w_spacing_(0)
+    , border_h_spacing_(0)
 {
     setOpaque(false);
 }
@@ -86,6 +86,7 @@ void ButtonVBar::setSpacing(unsigned int int_sp, unsigned int border_width_sp, u
 
 void ButtonVBar::setWidth(int width)
 {
+    const int ww = width - 2*border_w_spacing_;
     WidgetListIterator iter;
     for (iter = mWidgets.begin(); iter != mWidgets.end(); iter++)
     {
@@ -94,11 +95,11 @@ void ButtonVBar::setWidth(int width)
         ButtonVBar* pb = dynamic_cast<ButtonVBar*>(pw);
         if(pb)
         {
-            pb->setWidth(width - 2*border_w_spacing_);
+            pb->setWidth(ww);
         }
         else
         {
-            pw->setWidth(width - 2*border_h_spacing_);
+            pw->setWidth(ww);
         }
     }
     Container::setWidth(width);
@@ -201,9 +202,9 @@ void ButtonVBar::adjustSizeAndButtons(ButtonBarAdjustMode show_invisible_and_dis
 //----------------------------------------------------------------------------
 
 ButtonHBar::ButtonHBar()
-: int_spacing_(1)
-, border_w_spacing_(0)
-, border_h_spacing_(0)
+    : int_spacing_(1)
+    , border_w_spacing_(0)
+    , border_h_spacing_(0)
 {
     setOpaque(false);
 }
@@ -224,6 +225,7 @@ void ButtonHBar::setSpacing(unsigned int int_sp, unsigned int border_width_sp, u
 
 void ButtonHBar::setHeight(int height)
 {
+    const int wh = height - 2*border_h_spacing_;
     WidgetListIterator iter;
     for (iter = mWidgets.begin(); iter != mWidgets.end(); iter++)
     {
@@ -232,11 +234,11 @@ void ButtonHBar::setHeight(int height)
         ButtonHBar* pb = dynamic_cast<ButtonHBar*>(pw);
         if(pb)
         {
-            pb->setHeight(height - 2*border_w_spacing_);
+            pb->setHeight(wh);
         }
         else
         {
-            pw->setHeight(height - 2*border_h_spacing_);
+            pw->setHeight(wh);
         }
     }
     Container::setHeight(height);
