@@ -64,6 +64,7 @@ namespace gcn
     TextBox::TextBox()
         : mCaretColumn(0)
         , mCaretRow(0)
+        , mAlignment(Graphics::Left)
         , mEditable(true)
         , mOpaque(true)
     {
@@ -77,6 +78,7 @@ namespace gcn
     TextBox::TextBox(const std::string& text)
         : mCaretColumn(0)
         , mCaretRow(0)
+        , mAlignment(Graphics::Left)
         , mEditable(true)
         , mOpaque(true)
     {
@@ -91,6 +93,7 @@ namespace gcn
     TextBox::TextBox(const char* text)
         : mCaretColumn(0)
         , mCaretRow(0)
+        , mAlignment(Graphics::Left)
         , mEditable(true)
         , mOpaque(true)
     {
