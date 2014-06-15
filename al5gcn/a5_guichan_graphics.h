@@ -58,16 +58,9 @@ namespace gcn
 
         Allegro5Graphics();
 
-        Allegro5Graphics(ALLEGRO_BITMAP *target);
-
         virtual ~Allegro5Graphics();
 
-        //void setTarget(ALLEGRO_BITMAP *target);
-        //ALLEGRO_BITMAP *getTarget();
-
         const ALLEGRO_COLOR& getAllegroColor() const;
-
-        virtual void drawBitmap(ALLEGRO_BITMAP* bitmap, float dstX, float dstY);
 
         // Inherited from Graphics
 
@@ -92,7 +85,6 @@ namespace gcn
         virtual const Color& getColor() const;
 
     protected:
-        //ALLEGRO_BITMAP *mTarget;
         ALLEGRO_COLOR mAllegroColor;
         Color mColor;
     };

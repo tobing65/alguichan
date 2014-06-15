@@ -60,28 +60,12 @@ using namespace gcn;
 
 Allegro5Graphics::Allegro5Graphics()
 {
-    //mTarget = al_get_backbuffer(al_get_current_display());
-}
-
-Allegro5Graphics::Allegro5Graphics(ALLEGRO_BITMAP *target)
-{
-    //mTarget = target;
 }
 
 Allegro5Graphics::~Allegro5Graphics()
 {
 
 }
-
-// void Allegro5Graphics::setTarget(ALLEGRO_BITMAP *target)
-// {
-// 
-// }
-
-// ALLEGRO_BITMAP *Allegro5Graphics::getTarget()
-// {
-// 	return mTarget;
-// }
 
 void Allegro5Graphics::_beginDraw()
 {
@@ -107,11 +91,7 @@ bool Allegro5Graphics::pushClipArea(gcn::Rectangle area)
 
     const ClipRectangle& cr = mClipStack.top();
 
-    //ALLEGRO_BITMAP* old_target = al_get_target_bitmap();
-
-    //al_set_target_bitmap(mTarget);
     al_set_clipping_rectangle(cr.x, cr.y, cr.width, cr.height);
-    //al_set_target_bitmap(old_target);
 
     return result;
 }
@@ -127,11 +107,7 @@ void Allegro5Graphics::popClipArea()
 
     const ClipRectangle& cr = mClipStack.top();
 
-    //ALLEGRO_BITMAP* old_target = al_get_target_bitmap();
-
-    //al_set_target_bitmap(mTarget);
     al_set_clipping_rectangle(cr.x, cr.y, cr.width, cr.height);
-    //al_set_target_bitmap(old_target);
 }
 
 void Allegro5Graphics::drawImage(const Image* image,
@@ -293,10 +269,3 @@ const ALLEGRO_COLOR& Allegro5Graphics::getAllegroColor() const
     return mAllegroColor;
 }
 
-void Allegro5Graphics::drawBitmap(ALLEGRO_BITMAP* bitmap, float dstX, float dstY)
-{
-    const int xOffset = mClipStack.top().xOffset;
-    const int yOffset = mClipStack.top().yOffset;
-
-    al_draw_bitmap(bitmap, dstX + xOffset, dstY + yOffset, 0);
-}
