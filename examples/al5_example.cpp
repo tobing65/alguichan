@@ -107,12 +107,12 @@ int main(int argc, char **argv)
     window.resizeToContent();
     gcn::TabbedArea tabbedArea;
     tabbedArea.setSize(200, 100);
-    gcn::Button tabOneButton("A button in tab 1");
-    tabbedArea.addTab("Tab 1", &tabOneButton);
-    tabOneButton.setPosition(6,6);
-    gcn::CheckBox tabTwoCheckBox("A check box in tab 2");
-    tabbedArea.addTab("Tab 2", &tabTwoCheckBox);
-    tabTwoCheckBox.setPosition(6,6);
+    gcn::Button tab1Button("A button in tab 1");
+    tabbedArea.addTab("Tab 1", &tab1Button);
+    tab1Button.setPosition(6,6);
+    gcn::CheckBox tab2CheckBox("A check box in tab 2");
+    tabbedArea.addTab("Tab 2", &tab2CheckBox);
+    tab2CheckBox.setPosition(6,6);
     gcn::ImageButton tab3ImageButton;
     tab3ImageButton.setImage(p_image);
     tab3ImageButton.adjustSize();
@@ -169,6 +169,7 @@ int main(int argc, char **argv)
         }
         if(event.type == ALLEGRO_EVENT_TIMER && event.timer.source == p_timer)
         {
+            tab3ImageButton.setEnabled(tab2CheckBox.isSelected());
             // Now we let the Gui object perform its logic.
             gui.logic();
             // Now we let the Gui object draw itself.

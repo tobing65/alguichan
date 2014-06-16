@@ -139,12 +139,27 @@ void Allegro5Graphics::drawImage(const Image* image,
         throw GCN_EXCEPTION("Trying to draw an image of unknown format, must be an Allegro5Image.");
     }
 
-    mTintColor.a = opacity;
-    al_draw_tinted_scaled_bitmap(srcImage->getBitmap(), mTintColor,
-        srcX, srcY, srcW, srcH,
-        dstX + xOffset, dstY + yOffset, dstW, dstH,
-        0
-        );
+    if(opacity < 0.99)
+    {
+        int op, src, dst;
+        al_get_blender(&op, &src, &dst);
+        al_set_blender(ALLEGRO_ADD, ALLEGRO_ALPHA, ALLEGRO_INVERSE_ALPHA);
+        mTintColor.a = opacity;
+        al_draw_tinted_scaled_bitmap(srcImage->getBitmap(), mTintColor,
+            srcX, srcY, srcW, srcH,
+            dstX + xOffset, dstY + yOffset, dstW, dstH,
+            0
+            );
+        al_set_blender(op, src, dst);
+    }
+    else
+    {
+        al_draw_scaled_bitmap(srcImage->getBitmap(),
+            srcX, srcY, srcW, srcH,
+            dstX + xOffset, dstY + yOffset, dstW, dstH,
+            0
+            );
+    }
 
 #if 0
     al_draw_bitmap_region(srcImage->getBitmap(),
