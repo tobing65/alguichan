@@ -201,8 +201,7 @@
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
     <ProjectReference Include="..\..\..\ext\allegro51\allegro51.vcxproj">
-      <Project>{1d7859aa-724c-4dfc-a072-d1111f6c1f49}</Project>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <Project>{c123c4d5-6293-494f-8546-c92c092df5c9}</Project>
     </ProjectReference>
     <ProjectReference Include="..\..\..\ext\jpeg\jpeg8b.vcxproj">
       <Project>{e5d74eb7-8fd2-42dc-8942-27539fe4d773}</Project>
