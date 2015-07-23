@@ -163,6 +163,7 @@
     <ClCompile Include="guichan\defaultstyle.cpp" />
     <ClCompile Include="guichan\event.cpp" />
     <ClCompile Include="guichan\exception.cpp" />
+    <ClCompile Include="guichan\ext\overlay.cpp" />
     <ClCompile Include="guichan\focushandler.cpp" />
     <ClCompile Include="guichan\font.cpp" />
     <ClCompile Include="guichan\genericinput.cpp" />
@@ -212,6 +213,7 @@
     <ClInclude Include="guichan\defaultstyle.hpp" />
     <ClInclude Include="guichan\event.hpp" />
     <ClInclude Include="guichan\exception.hpp" />
+    <ClInclude Include="guichan\ext\overlay.hpp" />
     <ClInclude Include="guichan\focushandler.hpp" />
     <ClInclude Include="guichan\focuslistener.hpp" />
     <ClInclude Include="guichan\font.hpp" />

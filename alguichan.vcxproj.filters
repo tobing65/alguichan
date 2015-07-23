@@ -7,6 +7,9 @@
     <Filter Include="guichan\widgets">
       <UniqueIdentifier>{01e66caf-6ce2-4489-9c91-216ca3c8129b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="guichan\ext">
+      <UniqueIdentifier>{a1eac312-44e5-4053-a0a3-277f55aaac3e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="guichan\actionevent.cpp">
@@ -140,6 +143,9 @@
     </ClCompile>
     <ClCompile Include="guichan\widgets\window.cpp">
       <Filter>guichan\widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="guichan\ext\overlay.cpp">
+      <Filter>guichan\ext</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -309,5 +315,8 @@
       <Filter>guichan\widgets</Filter>
     </ClInclude>
     <ClInclude Include="alguichan.hpp" />
+    <ClInclude Include="guichan\ext\overlay.hpp">
+      <Filter>guichan\ext</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -97,6 +97,7 @@
 #include <guichan/widgets/textbox.hpp>
 #include <guichan/widgets/textfield.hpp>
 #include <guichan/widgets/window.hpp>
+#include <guichan/ext/overlay.hpp>
 
 #include "guichan/platform.hpp"
 
