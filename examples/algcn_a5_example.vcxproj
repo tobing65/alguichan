@@ -196,6 +196,9 @@
     <ClCompile Include="al5_example.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\ext\allegro51\al5addimage.vcxproj">
+      <Project>{591d3a53-13c1-4059-8b1e-6474226d11ed}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\ext\allegro51\al5addons.vcxproj">
       <Project>{1d7859aa-724c-4dfc-8b57-d1111f6c1f49}</Project>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
