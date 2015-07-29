@@ -50,6 +50,9 @@ using namespace gcn;
 
 Allegro5Input::Allegro5Input()
 : mSupressRepeat(false)
+, mShiftPressed(false)
+, mCtrlPressed(false)
+, mAltPressed(false)
 {
 }
 
@@ -114,20 +117,45 @@ void Allegro5Input::pushInput(ALLEGRO_EVENT &event)
 			{
 				type = MouseInput::Moved;
 			}
-			mMouseQueue.push(MouseInput (MouseInput::Empty, type,
-                          event.mouse.x, event.mouse.y, 0));
+
+            MouseInput mi(MouseInput::Empty, type, event.mouse.x, event.mouse.y, 0, mShiftPressed, mCtrlPressed, mAltPressed, mMetaPressed);
+            mMouseQueue.push(mi);
 			break;
 		}
         case ALLEGRO_EVENT_KEY_DOWN:
         case ALLEGRO_EVENT_KEY_CHAR:
         {
-            // this avoid duplicate events for key that generate down and char events
-            if(event.type == ALLEGRO_EVENT_KEY_DOWN && event.keyboard.unichar == 0)
-                break;
             if(mSupressRepeat && event.keyboard.repeat)
                 break;
 
             const Key keyObj = convertToKey(event.keyboard.keycode, event.keyboard.unichar);
+
+            // this avoid duplicate events for key that generate down and char events
+            if(event.type == ALLEGRO_EVENT_KEY_DOWN && event.keyboard.unichar == 0)
+            {
+                switch(keyObj.getValue())
+                {
+                case gcn::Key::LeftShift:
+                case gcn::Key::RightShift:
+                    mShiftPressed = true;
+                    break;
+                case gcn::Key::LeftControl:
+                case gcn::Key::RightControl:
+                    mCtrlPressed = true;
+                    break;
+                case gcn::Key::LeftMeta:
+                case gcn::Key::RightMeta:
+                    mMetaPressed = true;
+                    break;
+                case gcn::Key::LeftAlt:
+                case gcn::Key::RightAlt:
+                    mAltPressed = true;
+                    break;
+                default:
+                    break;
+                }
+                break;
+            }
 
             KeyInput ki(keyObj, KeyInput::Pressed);
 
@@ -135,9 +163,8 @@ void Allegro5Input::pushInput(ALLEGRO_EVENT &event)
             ki.setShiftPressed(event.keyboard.modifiers & ALLEGRO_KEYMOD_SHIFT);
             ki.setAltPressed(event.keyboard.modifiers & ALLEGRO_KEYMOD_ALT);
             ki.setControlPressed(event.keyboard.modifiers & ALLEGRO_KEYMOD_CTRL);
-            ki.setMetaPressed(event.keyboard.modifiers & (ALLEGRO_KEYMOD_COMMAND |
-                                            ALLEGRO_KEYMOD_LWIN |
-                                            ALLEGRO_KEYMOD_RWIN));
+            ki.setMetaPressed(event.keyboard.modifiers & (ALLEGRO_KEYMOD_COMMAND | ALLEGRO_KEYMOD_LWIN | ALLEGRO_KEYMOD_RWIN));
+
             mKeyQueue.push(ki);
             break;
         }
@@ -152,9 +179,13 @@ void Allegro5Input::pushInput(ALLEGRO_EVENT &event)
             ki.setShiftPressed(event.keyboard.modifiers & ALLEGRO_KEYMOD_SHIFT);
             ki.setAltPressed(event.keyboard.modifiers & ALLEGRO_KEYMOD_ALT);
             ki.setControlPressed(event.keyboard.modifiers & ALLEGRO_KEYMOD_CTRL);
-            ki.setMetaPressed(event.keyboard.modifiers & (ALLEGRO_KEYMOD_COMMAND |
-                                            ALLEGRO_KEYMOD_LWIN |
-                                            ALLEGRO_KEYMOD_RWIN));
+            ki.setMetaPressed(event.keyboard.modifiers & (ALLEGRO_KEYMOD_COMMAND | ALLEGRO_KEYMOD_LWIN | ALLEGRO_KEYMOD_RWIN));
+
+            mShiftPressed = ki.isShiftPressed();
+            mCtrlPressed = ki.isControlPressed();
+            mAltPressed = ki.isAltPressed();
+            mMetaPressed = ki.isMetaPressed();
+
             mKeyQueue.push(ki);
             break;
         }
@@ -169,8 +200,7 @@ void Allegro5Input::pushInput(ALLEGRO_EVENT &event)
 			else
 				button = MouseInput::Middle;
 
-            mMouseQueue.push(MouseInput(button, MouseInput::Pressed,
-                          event.mouse.x, event.mouse.y, 0));
+            mMouseQueue.push(MouseInput(button, MouseInput::Pressed, event.mouse.x, event.mouse.y, 0, mShiftPressed, mCtrlPressed, mAltPressed, mMetaPressed));
 
 			break;
   		}
@@ -185,8 +215,7 @@ void Allegro5Input::pushInput(ALLEGRO_EVENT &event)
 			else
 				button = MouseInput::Middle;
 
-			MouseInput mi(button, MouseInput::Released,
-                          event.mouse.x, event.mouse.y, 0);
+			MouseInput mi(button, MouseInput::Released, event.mouse.x, event.mouse.y, 0, mShiftPressed, mCtrlPressed, mAltPressed, mMetaPressed);
 
             mMouseQueue.push(mi);
 			break;

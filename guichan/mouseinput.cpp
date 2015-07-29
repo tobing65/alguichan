@@ -56,12 +56,16 @@ namespace gcn
                            unsigned int type,
                            int x,
                            int y,
-                           int timeStamp)
-            : mType(type),
-              mButton(button),
-              mTimeStamp(timeStamp),
-              mX(x),
-              mY(y)
+                           int timeStamp,
+                           bool shiftPressed, bool ctrlPressed, bool altPressed, bool metaPressed)
+            : mType(type)
+            , mButton(button)
+            , mTimeStamp(timeStamp)
+            , mX(x), mY(y)
+            , mShiftPressed(shiftPressed)
+            , mCtrlPressed(ctrlPressed)
+            , mAltPressed(altPressed)
+            , mMetaPressed(metaPressed)
     {
     }
 

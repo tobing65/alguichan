@@ -351,6 +351,7 @@ namespace gcn
                                           int button,
                                           int x,
                                           int y,
+                                          bool shiftPressed, bool ctrlPressed, bool altPressed, bool metaPressed,
                                           bool force = false,
                                           bool toSourceOnly = false);
 

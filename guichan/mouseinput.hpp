@@ -84,7 +84,8 @@ namespace gcn
                    unsigned int type,
                    int x,
                    int y,
-                   int timeStamp);
+                   int timeStamp,
+                   bool shiftPresseed, bool CtrlPressed, bool altPressed, bool metaPressed);
 
         /**
          * Sets the type of the mouse input.
@@ -182,6 +183,26 @@ namespace gcn
          */
         int getY() const;
 
+        bool isShiftPressed() const throw()
+        {
+            return mShiftPressed;
+        }
+
+        bool isCtrlPressed() const throw()
+        {
+            return mCtrlPressed;
+        }
+
+        bool isAltPressed() const throw()
+        {
+            return mAltPressed;
+        }
+
+        bool isMetaPressed() const throw()
+        {
+            return mMetaPressed;
+        }
+
         /**
          * Mouse input event types. This enum partially corresponds
          * to the enum with event types in MouseEvent for easy mapping.
@@ -232,6 +253,11 @@ namespace gcn
          * Holds the y coordinate of the mouse input.
          */
         int mY;
+
+        bool mShiftPressed;
+        bool mCtrlPressed;
+        bool mAltPressed;
+        bool mMetaPressed;
     };
 }
 

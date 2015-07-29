@@ -337,6 +337,7 @@ namespace gcn
                                          mouseInput.getButton(),
                                          mouseInput.getX(),
                                          mouseInput.getY(),
+                                         mouseInput.isShiftPressed(), mouseInput.isCtrlPressed(), mouseInput.isAltPressed(),
                                          true,
                                          true);
                 }
@@ -383,6 +384,7 @@ namespace gcn
                                              mouseInput.getButton(),
                                              mouseInput.getX(),
                                              mouseInput.getY(),
+                                             mouseInput.isShiftPressed(), mouseInput.isCtrlPressed(), mouseInput.isAltPressed(),
                                              true,
                                              true);                                       
                         mClickCount = 1;
@@ -454,6 +456,7 @@ namespace gcn
                                      mouseInput.getButton(),
                                      mouseInput.getX(),
                                      mouseInput.getY(),
+                                     mouseInput.isShiftPressed(), mouseInput.isCtrlPressed(), mouseInput.isAltPressed(),
                                      true,
                                      true);
                 mWidgetWithMouseQueue.push_front(widget);
@@ -470,7 +473,9 @@ namespace gcn
                                  MouseEvent::Dragged,
                                  mLastMouseDragButton,
                                  mouseInput.getX(),
-                                 mouseInput.getY());
+                                 mouseInput.getY(),
+                                 mouseInput.isShiftPressed(), mouseInput.isCtrlPressed(), mouseInput.isAltPressed(), mouseInput.isMetaPressed()
+                                 );
         }
         else
         {
@@ -479,7 +484,9 @@ namespace gcn
                                  MouseEvent::Moved,
                                  mouseInput.getButton(),
                                  mouseInput.getX(),
-                                 mouseInput.getY());
+                                 mouseInput.getY(),
+                                 mouseInput.isShiftPressed(), mouseInput.isCtrlPressed(), mouseInput.isAltPressed(), mouseInput.isMetaPressed()
+                                 );
         }
     }
 
@@ -510,7 +517,9 @@ namespace gcn
                              MouseEvent::Pressed,
                              mouseInput.getButton(),
                              mouseInput.getX(),
-                             mouseInput.getY());
+                             mouseInput.getY(),
+                             mouseInput.isShiftPressed(), mouseInput.isCtrlPressed(), mouseInput.isAltPressed(), mouseInput.isMetaPressed()
+                             );
 
         mFocusHandler->setLastWidgetPressed(sourceWidget);
 
@@ -535,7 +544,9 @@ namespace gcn
                              MouseEvent::WheelMovedDown,
                              mouseInput.getButton(),
                              mouseInput.getX(),
-                             mouseInput.getY());
+                             mouseInput.getY(),
+                             mouseInput.isShiftPressed(), mouseInput.isCtrlPressed(), mouseInput.isAltPressed(), mouseInput.isMetaPressed()
+                             );
     }
 
     void Gui::handleMouseWheelMovedUp(const MouseInput& mouseInput)
@@ -552,7 +563,9 @@ namespace gcn
                              MouseEvent::WheelMovedUp,
                              mouseInput.getButton(),
                              mouseInput.getX(),
-                             mouseInput.getY());
+                             mouseInput.getY(),
+                             mouseInput.isShiftPressed(), mouseInput.isCtrlPressed(), mouseInput.isAltPressed(), mouseInput.isMetaPressed()
+                             );
     }
 
     void Gui::handleMouseReleased(const MouseInput& mouseInput)
@@ -574,7 +587,9 @@ namespace gcn
                              MouseEvent::Released,
                              mouseInput.getButton(),
                              mouseInput.getX(),
-                             mouseInput.getY());
+                             mouseInput.getY(),
+                             mouseInput.isShiftPressed(), mouseInput.isCtrlPressed(), mouseInput.isAltPressed(), mouseInput.isMetaPressed()
+                             );
 
         if (mouseInput.getButton() == mLastMousePressButton            
             && mFocusHandler->getLastWidgetPressed() == sourceWidget)
@@ -583,7 +598,9 @@ namespace gcn
                                  MouseEvent::Clicked,
                                  mouseInput.getButton(),
                                  mouseInput.getX(),
-                                 mouseInput.getY());
+                                 mouseInput.getY(),
+                                 mouseInput.isShiftPressed(), mouseInput.isCtrlPressed(), mouseInput.isAltPressed(), mouseInput.isMetaPressed()
+                                 );
             
             mFocusHandler->setLastWidgetPressed(NULL);
         }
@@ -644,6 +661,7 @@ namespace gcn
                                    int button,
                                    int x,
                                    int y,
+                                   bool shiftPressed, bool ctrlPressed, bool altPressed, bool metaPressed,
                                    bool force,
                                    bool toSourceOnly)
     {
@@ -661,9 +679,9 @@ namespace gcn
 
         MouseEvent mouseEvent(source,
                               source,
-                              mShiftPressed,
-                              mControlPressed,
-                              mAltPressed,
+                              shiftPressed,
+                              ctrlPressed,
+                              altPressed,
                               mMetaPressed,
                               type,
                               button,
@@ -883,6 +901,7 @@ namespace gcn
                                      mLastMousePressButton,
                                      mLastMouseX,
                                      mLastMouseY,
+                                     false, false, false,
                                      true,
                                      true);
             }
@@ -930,6 +949,7 @@ namespace gcn
                                      mLastMousePressButton,
                                      mLastMouseX,
                                      mLastMouseY,
+                                     false, false, false,
                                      false,
                                      true);
                 mWidgetWithMouseQueue.push_front(widget);

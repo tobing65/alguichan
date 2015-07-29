@@ -84,6 +84,11 @@ namespace gcn
         std::queue<MouseInput> mMouseQueue;
 
         bool mSupressRepeat;
+
+        bool mShiftPressed;
+        bool mCtrlPressed;
+        bool mAltPressed;
+        bool mMetaPressed;
     };
 
 }
