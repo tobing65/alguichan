@@ -210,8 +210,8 @@
       <Project>{e5d74eb7-8fd2-42dc-8942-27539fe4d773}</Project>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\ext\lpng15\lpng15.vcxproj">
-      <Project>{c0e1ea37-c114-4d29-8634-e96cd95997c2}</Project>
+    <ProjectReference Include="..\..\..\ext\lpng16\lpng16.vcxproj">
+      <Project>{ffae18dd-ac92-41b1-b36d-86dd4f9e23a5}</Project>
     </ProjectReference>
     <ProjectReference Include="..\al5gcn.vcxproj">
       <Project>{e1f137a6-b96c-4afd-a264-56eb3664b765}</Project>
