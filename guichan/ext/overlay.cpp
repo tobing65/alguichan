@@ -179,7 +179,7 @@ void OverlayPlugin::handleOverlay()
         OverlayCallback*p = dynamic_cast<OverlayCallback*>(w);
         if(p)
         {
-            char omsg[2048] = "";
+            char omsg[16*1024] = "";
             size_t sz = p->getOverlayString(omsg, sizeof(omsg));
             if(sz > 0)
             {
