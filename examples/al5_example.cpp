@@ -57,7 +57,7 @@ int main(int argc, char **argv)
     al_init_primitives_addon();
 
     // create display
-    al_set_new_display_flags(ALLEGRO_WINDOWED);
+    al_set_new_display_flags(ALLEGRO_WINDOWED|ALLEGRO_RESIZABLE);
     ALLEGRO_DISPLAY* p_display = al_create_display(640, 480);
 
     // init guichan and backend
@@ -166,6 +166,11 @@ int main(int argc, char **argv)
                     break;
             input.pushInput(event);
             continue;
+        }
+        if(event.type == ALLEGRO_EVENT_DISPLAY_RESIZE)
+        {
+            al_resize_display(al_get_current_display(), event.display.width, event.display.height);
+            gui.getTop()->setSize(event.display.width, event.display.height);
         }
         if(event.type == ALLEGRO_EVENT_TIMER && event.timer.source == p_timer)
         {
