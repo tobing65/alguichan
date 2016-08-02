@@ -100,322 +100,326 @@ MouseInput Allegro5Input::dequeueMouseInput()
 
 void Allegro5Input::pushInput(ALLEGRO_EVENT &event)
 {
-    switch (event.type)
+    switch(event.type)
     {
-		case ALLEGRO_EVENT_MOUSE_AXES:
-		{
-			int type=0;
-			if(event.mouse.dz > 0)
-			{
-				type = MouseInput::WheelMovedUp;
-			}
-			else if(event.mouse.dz < 0)
-			{
-				type = MouseInput::WheelMovedDown;
-			}
-			else
-			{
-				type = MouseInput::Moved;
-			}
-
-            MouseInput mi(MouseInput::Empty, type, event.mouse.x, event.mouse.y, 0, mShiftPressed, mCtrlPressed, mAltPressed, mMetaPressed);
-            mMouseQueue.push(mi);
-			break;
-		}
-        case ALLEGRO_EVENT_KEY_DOWN:
-        case ALLEGRO_EVENT_KEY_CHAR:
+    case ALLEGRO_EVENT_MOUSE_AXES:
+    {
+        int type = 0;
+        if(event.mouse.dz > 0)
         {
-            if(mSupressRepeat && event.keyboard.repeat)
-                break;
+            type = MouseInput::WheelMovedUp;
+        }
+        else if(event.mouse.dz < 0)
+        {
+            type = MouseInput::WheelMovedDown;
+        }
+        else
+        {
+            type = MouseInput::Moved;
+        }
 
-            const Key keyObj = convertToKey(event.keyboard.keycode, event.keyboard.unichar);
+        MouseInput mi(MouseInput::Empty, type, event.mouse.x, event.mouse.y, 0, mShiftPressed, mCtrlPressed, mAltPressed, mMetaPressed);
+        mMouseQueue.push(mi);
+        break;
+    }
+    case ALLEGRO_EVENT_KEY_DOWN:
+    case ALLEGRO_EVENT_KEY_CHAR:
+    {
+        if(mSupressRepeat && event.keyboard.repeat)
+            break;
 
-            // this avoid duplicate events for key that generate down and char events
-            if(event.type == ALLEGRO_EVENT_KEY_DOWN && event.keyboard.unichar == 0)
+        const Key keyObj = convertToKey(event.keyboard.keycode, event.keyboard.unichar);
+
+        // this avoid duplicate events for key that generate down and char events
+        if(event.type == ALLEGRO_EVENT_KEY_DOWN && event.keyboard.unichar == 0)
+        {
+            switch(keyObj.getValue())
             {
-                switch(keyObj.getValue())
-                {
-                case gcn::Key::LeftShift:
-                case gcn::Key::RightShift:
-                    mShiftPressed = true;
-                    break;
-                case gcn::Key::LeftControl:
-                case gcn::Key::RightControl:
-                    mCtrlPressed = true;
-                    break;
-                case gcn::Key::LeftMeta:
-                case gcn::Key::RightMeta:
-                    mMetaPressed = true;
-                    break;
-                case gcn::Key::LeftAlt:
-                case gcn::Key::RightAlt:
-                    mAltPressed = true;
-                    break;
-                default:
-                    break;
-                }
+            case gcn::Key::LeftShift:
+            case gcn::Key::RightShift:
+                mShiftPressed = true;
+                break;
+            case gcn::Key::LeftControl:
+            case gcn::Key::RightControl:
+                mCtrlPressed = true;
+                break;
+            case gcn::Key::LeftMeta:
+            case gcn::Key::RightMeta:
+                mMetaPressed = true;
+                break;
+            case gcn::Key::LeftAlt:
+            case gcn::Key::RightAlt:
+                mAltPressed = true;
+                break;
+            default:
                 break;
             }
-
-            KeyInput ki(keyObj, KeyInput::Pressed);
-
-            ki.setNumericPad(isNumericPad(event.keyboard.keycode));
-            ki.setShiftPressed(event.keyboard.modifiers & ALLEGRO_KEYMOD_SHIFT);
-            ki.setAltPressed(event.keyboard.modifiers & ALLEGRO_KEYMOD_ALT);
-            ki.setControlPressed(event.keyboard.modifiers & ALLEGRO_KEYMOD_CTRL);
-            ki.setMetaPressed(event.keyboard.modifiers & (ALLEGRO_KEYMOD_COMMAND | ALLEGRO_KEYMOD_LWIN | ALLEGRO_KEYMOD_RWIN));
-
-            mKeyQueue.push(ki);
             break;
         }
 
-        case ALLEGRO_EVENT_KEY_UP:
-        {
-            Key keyObj = convertToKey(event.keyboard.keycode, event.keyboard.unichar);
+        KeyInput ki(keyObj, KeyInput::Pressed);
 
-            KeyInput ki(keyObj, KeyInput::Released);
+        ki.setNumericPad(isNumericPad(event.keyboard.keycode));
+        ki.setShiftPressed(event.keyboard.modifiers & ALLEGRO_KEYMOD_SHIFT);
+        ki.setAltPressed(event.keyboard.modifiers & ALLEGRO_KEYMOD_ALT);
+        ki.setControlPressed(event.keyboard.modifiers & ALLEGRO_KEYMOD_CTRL);
+        ki.setMetaPressed(event.keyboard.modifiers & (ALLEGRO_KEYMOD_COMMAND | ALLEGRO_KEYMOD_LWIN | ALLEGRO_KEYMOD_RWIN));
 
-            ki.setNumericPad(isNumericPad(event.keyboard.keycode));
-            ki.setShiftPressed(event.keyboard.modifiers & ALLEGRO_KEYMOD_SHIFT);
-            ki.setAltPressed(event.keyboard.modifiers & ALLEGRO_KEYMOD_ALT);
-            ki.setControlPressed(event.keyboard.modifiers & ALLEGRO_KEYMOD_CTRL);
-            ki.setMetaPressed(event.keyboard.modifiers & (ALLEGRO_KEYMOD_COMMAND | ALLEGRO_KEYMOD_LWIN | ALLEGRO_KEYMOD_RWIN));
+        mKeyQueue.push(ki);
+        break;
+    }
 
-            mShiftPressed = ki.isShiftPressed();
-            mCtrlPressed = ki.isControlPressed();
-            mAltPressed = ki.isAltPressed();
-            mMetaPressed = ki.isMetaPressed();
+    case ALLEGRO_EVENT_KEY_UP:
+    {
+        const Key keyObj = convertToKey(event.keyboard.keycode, event.keyboard.unichar);
 
-            mKeyQueue.push(ki);
-            break;
-        }
+        KeyInput ki(keyObj, KeyInput::Released);
 
-  		case ALLEGRO_EVENT_MOUSE_BUTTON_DOWN:
-  		{
-  		    int button;
-			if(event.mouse.button == 1)
-				button = MouseInput::Left;
-			else if(event.mouse.button == 2)
-				button = MouseInput::Right;
-			else
-				button = MouseInput::Middle;
+        ki.setNumericPad(isNumericPad(event.keyboard.keycode));
+        ki.setShiftPressed(event.keyboard.modifiers & ALLEGRO_KEYMOD_SHIFT);
+        ki.setAltPressed(event.keyboard.modifiers & ALLEGRO_KEYMOD_ALT);
+        ki.setControlPressed(event.keyboard.modifiers & ALLEGRO_KEYMOD_CTRL);
+        ki.setMetaPressed(event.keyboard.modifiers & (ALLEGRO_KEYMOD_COMMAND | ALLEGRO_KEYMOD_LWIN | ALLEGRO_KEYMOD_RWIN));
 
-            mMouseQueue.push(MouseInput(button, MouseInput::Pressed, event.mouse.x, event.mouse.y, 0, mShiftPressed, mCtrlPressed, mAltPressed, mMetaPressed));
+        mShiftPressed = ki.isShiftPressed();
+        mCtrlPressed = ki.isControlPressed();
+        mAltPressed = ki.isAltPressed();
+        mMetaPressed = ki.isMetaPressed();
 
-			break;
-  		}
+        mKeyQueue.push(ki);
+        break;
+    }
 
-		case ALLEGRO_EVENT_MOUSE_BUTTON_UP:
-		{
-		    int button;
-			if(event.mouse.button == 1)
-				button = MouseInput::Left;
-			else if(event.mouse.button == 2)
-				button = MouseInput::Right;
-			else
-				button = MouseInput::Middle;
+    case ALLEGRO_EVENT_MOUSE_BUTTON_DOWN:
+    {
+        int button;
+        if(event.mouse.button == 1)
+            button = MouseInput::Left;
+        else if(event.mouse.button == 2)
+            button = MouseInput::Right;
+        else
+            button = MouseInput::Middle;
 
-			MouseInput mi(button, MouseInput::Released, event.mouse.x, event.mouse.y, 0, mShiftPressed, mCtrlPressed, mAltPressed, mMetaPressed);
+        mMouseQueue.push(MouseInput(button, MouseInput::Pressed, event.mouse.x, event.mouse.y, 0, mShiftPressed, mCtrlPressed, mAltPressed, mMetaPressed));
 
-            mMouseQueue.push(mi);
-			break;
-		}
+        break;
+    }
 
-	}   // end switch
+    case ALLEGRO_EVENT_MOUSE_BUTTON_UP:
+    {
+        int button;
+        if(event.mouse.button == 1)
+            button = MouseInput::Left;
+        else if(event.mouse.button == 2)
+            button = MouseInput::Right;
+        else
+            button = MouseInput::Middle;
+
+        MouseInput mi(button, MouseInput::Released, event.mouse.x, event.mouse.y, 0, mShiftPressed, mCtrlPressed, mAltPressed, mMetaPressed);
+
+        mMouseQueue.push(mi);
+        break;
+    }
+
+    default:
+        break;
+
+    }   // end switch
 }
 
 
 Key Allegro5Input::convertToKey(int keycode, int unicode)
 {
-	int keysym;
+	int keysym = 0;
 	bool pad = false;
 
 	switch(keycode)
 	{
-	  case ALLEGRO_KEY_ESCAPE:
-		  keysym = Key::Escape;
-		  break;
+    case ALLEGRO_KEY_ESCAPE:
+        keysym = Key::Escape;
+        break;
 
-	  case ALLEGRO_KEY_ALT:
-		  keysym = Key::LeftAlt;
-		  break;
+    case ALLEGRO_KEY_ALT:
+        keysym = Key::LeftAlt;
+        break;
 
-	  case ALLEGRO_KEY_ALTGR:
-		  keysym = Key::RightAlt;
-		  break;
+    case ALLEGRO_KEY_ALTGR:
+        keysym = Key::RightAlt;
+        break;
 
-	  case ALLEGRO_KEY_LSHIFT:
-		  keysym = Key::LeftShift;
-		  break;
+    case ALLEGRO_KEY_LSHIFT:
+        keysym = Key::LeftShift;
+        break;
 
-	  case ALLEGRO_KEY_RSHIFT:
-		  keysym = Key::RightShift;
-		  break;
+    case ALLEGRO_KEY_RSHIFT:
+        keysym = Key::RightShift;
+        break;
 
-	  case ALLEGRO_KEY_LCTRL:
-		  keysym = Key::LeftControl;
-		  break;
+    case ALLEGRO_KEY_LCTRL:
+        keysym = Key::LeftControl;
+        break;
 
-	  case ALLEGRO_KEY_RCTRL:
-		  keysym = Key::RightControl;
-		  break;
+    case ALLEGRO_KEY_RCTRL:
+        keysym = Key::RightControl;
+        break;
 
-	  case ALLEGRO_KEY_LWIN:
-		  keysym = Key::LeftMeta;
-		  break;
+    case ALLEGRO_KEY_LWIN:
+        keysym = Key::LeftMeta;
+        break;
 
-	  case ALLEGRO_KEY_RWIN:
-		  keysym = Key::RightMeta;
-		  break;
+    case ALLEGRO_KEY_RWIN:
+        keysym = Key::RightMeta;
+        break;
 
-	  case ALLEGRO_KEY_INSERT:
-		  keysym = Key::Insert;
-		  break;
+    case ALLEGRO_KEY_INSERT:
+        keysym = Key::Insert;
+        break;
 
-	  case ALLEGRO_KEY_HOME:
-		  keysym = Key::Home;
-		  break;
+    case ALLEGRO_KEY_HOME:
+        keysym = Key::Home;
+        break;
 
-	  case ALLEGRO_KEY_PGUP:
-		  keysym = Key::PageUp;
-		  break;
+    case ALLEGRO_KEY_PGUP:
+        keysym = Key::PageUp;
+        break;
 
-	  case ALLEGRO_KEY_PGDN:
-		  keysym = Key::PageDown;
-		  break;
+    case ALLEGRO_KEY_PGDN:
+        keysym = Key::PageDown;
+        break;
 
-      case ALLEGRO_KEY_PAD_DELETE:
-          pad = true;
-	  case ALLEGRO_KEY_DELETE:
-		  keysym = Key::Delete;
-		  break;
+    case ALLEGRO_KEY_PAD_DELETE:
+        pad = true;
+    case ALLEGRO_KEY_DELETE:
+        keysym = Key::Delete;
+        break;
 
-	  case ALLEGRO_KEY_END:
-		  keysym = Key::End;
-		  break;
+    case ALLEGRO_KEY_END:
+        keysym = Key::End;
+        break;
 
-	  case ALLEGRO_KEY_CAPSLOCK:
-		  keysym = Key::CapsLock;
-		  break;
+    case ALLEGRO_KEY_CAPSLOCK:
+        keysym = Key::CapsLock;
+        break;
 
-	  case ALLEGRO_KEY_BACKSPACE:
-		  keysym = Key::Backspace;
-		  break;
+    case ALLEGRO_KEY_BACKSPACE:
+        keysym = Key::Backspace;
+        break;
 
-	  case ALLEGRO_KEY_F1:
-		  keysym = Key::F1;
-		  break;
+    case ALLEGRO_KEY_F1:
+        keysym = Key::F1;
+        break;
 
-	  case ALLEGRO_KEY_F2:
-		  keysym = Key::F2;
-		  break;
+    case ALLEGRO_KEY_F2:
+        keysym = Key::F2;
+        break;
 
-	  case ALLEGRO_KEY_F3:
-		  keysym = Key::F3;
-		  break;
+    case ALLEGRO_KEY_F3:
+        keysym = Key::F3;
+        break;
 
-	  case ALLEGRO_KEY_F4:
-		  keysym = Key::F4;
-		  break;
+    case ALLEGRO_KEY_F4:
+        keysym = Key::F4;
+        break;
 
-	  case ALLEGRO_KEY_F5:
-		  keysym = Key::F5;
-		  break;
+    case ALLEGRO_KEY_F5:
+        keysym = Key::F5;
+        break;
 
-	  case ALLEGRO_KEY_F6:
-		  keysym = Key::F6;
-		  break;
+    case ALLEGRO_KEY_F6:
+        keysym = Key::F6;
+        break;
 
-	  case ALLEGRO_KEY_F7:
-		  keysym = Key::F7;
-		  break;
+    case ALLEGRO_KEY_F7:
+        keysym = Key::F7;
+        break;
 
-	  case ALLEGRO_KEY_F8:
-		  keysym = Key::F8;
-		  break;
+    case ALLEGRO_KEY_F8:
+        keysym = Key::F8;
+        break;
 
-	  case ALLEGRO_KEY_F9:
-		  keysym = Key::F9;
-		  break;
+    case ALLEGRO_KEY_F9:
+        keysym = Key::F9;
+        break;
 
-	  case ALLEGRO_KEY_F10:
-		  keysym = Key::F10;
-		  break;
+    case ALLEGRO_KEY_F10:
+        keysym = Key::F10;
+        break;
 
-	  case ALLEGRO_KEY_F11:
-		  keysym = Key::F11;
-		  break;
+    case ALLEGRO_KEY_F11:
+        keysym = Key::F11;
+        break;
 
-	  case ALLEGRO_KEY_F12:
-		  keysym = Key::F12;
-		  break;
+    case ALLEGRO_KEY_F12:
+        keysym = Key::F12;
+        break;
 
-	  case ALLEGRO_KEY_PRINTSCREEN:
-		  keysym = Key::PrintScreen;
-		  break;
+    case ALLEGRO_KEY_PRINTSCREEN:
+        keysym = Key::PrintScreen;
+        break;
 
-	  case ALLEGRO_KEY_PAUSE:
-		  keysym = Key::Pause;
-		  break;
+    case ALLEGRO_KEY_PAUSE:
+        keysym = Key::Pause;
+        break;
 
-	  case ALLEGRO_KEY_SCROLLLOCK:
-		  keysym = Key::ScrollLock;
-		  break;
+    case ALLEGRO_KEY_SCROLLLOCK:
+        keysym = Key::ScrollLock;
+        break;
 
-	  case ALLEGRO_KEY_NUMLOCK:
-		  keysym = Key::NumLock;
-		  break;
+    case ALLEGRO_KEY_NUMLOCK:
+        keysym = Key::NumLock;
+        break;
 
-	  case ALLEGRO_KEY_LEFT:
-		  keysym = Key::Left;
-		  break;
+    case ALLEGRO_KEY_LEFT:
+        keysym = Key::Left;
+        break;
 
-	  case ALLEGRO_KEY_RIGHT:
-		  keysym = Key::Right;
-		  break;
+    case ALLEGRO_KEY_RIGHT:
+        keysym = Key::Right;
+        break;
 
-	  case ALLEGRO_KEY_UP:
-		  keysym = Key::Up;
-		  break;
+    case ALLEGRO_KEY_UP:
+        keysym = Key::Up;
+        break;
 
-	  case ALLEGRO_KEY_DOWN:
-		  keysym = Key::Down;
-		  break;
+    case ALLEGRO_KEY_DOWN:
+        keysym = Key::Down;
+        break;
 
-	  case ALLEGRO_KEY_PAD_ENTER:
-		  pad = true;
-	  case ALLEGRO_KEY_ENTER:
-		  keysym = Key::Enter;
-		  break;
+    case ALLEGRO_KEY_PAD_ENTER:
+        pad = true;
+    case ALLEGRO_KEY_ENTER:
+        keysym = Key::Enter;
+        break;
 
-      default:
-		  keysym = unicode;
-	}
+    default:
+        keysym = unicode;
+        break;
+    }
 
-	return Key(keysym);
+    return Key(keysym);
 }
 
 bool Allegro5Input::isNumericPad(int keycode)
 {
-	switch (keycode)
-	{
-	  case ALLEGRO_KEY_PAD_0:
-	  case ALLEGRO_KEY_PAD_1:
-	  case ALLEGRO_KEY_PAD_2:
-	  case ALLEGRO_KEY_PAD_3:
-	  case ALLEGRO_KEY_PAD_4:
-	  case ALLEGRO_KEY_PAD_5:
-	  case ALLEGRO_KEY_PAD_6:
-	  case ALLEGRO_KEY_PAD_7:
-	  case ALLEGRO_KEY_PAD_8:
-	  case ALLEGRO_KEY_PAD_9:
-	  case ALLEGRO_KEY_PAD_SLASH:
-	  case ALLEGRO_KEY_PAD_MINUS:
-	  case ALLEGRO_KEY_PAD_PLUS:
-		  return true;
-	  default:
-		  return false;
-	}
+    switch(keycode)
+    {
+    case ALLEGRO_KEY_PAD_0:
+    case ALLEGRO_KEY_PAD_1:
+    case ALLEGRO_KEY_PAD_2:
+    case ALLEGRO_KEY_PAD_3:
+    case ALLEGRO_KEY_PAD_4:
+    case ALLEGRO_KEY_PAD_5:
+    case ALLEGRO_KEY_PAD_6:
+    case ALLEGRO_KEY_PAD_7:
+    case ALLEGRO_KEY_PAD_8:
+    case ALLEGRO_KEY_PAD_9:
+    case ALLEGRO_KEY_PAD_SLASH:
+    case ALLEGRO_KEY_PAD_MINUS:
+    case ALLEGRO_KEY_PAD_PLUS:
+        return true;
+    default:
+        return false;
+    }
 }
 
 void Allegro5Input::suppressKeyRepeat(bool new_value)
