@@ -15,16 +15,10 @@
     <ClCompile Include="guichan\actionevent.cpp">
       <Filter>guichan</Filter>
     </ClCompile>
-    <ClCompile Include="guichan\basiccontainer.cpp">
-      <Filter>guichan</Filter>
-    </ClCompile>
     <ClCompile Include="guichan\cliprectangle.cpp">
       <Filter>guichan</Filter>
     </ClCompile>
     <ClCompile Include="guichan\color.cpp">
-      <Filter>guichan</Filter>
-    </ClCompile>
-    <ClCompile Include="guichan\containerevent.cpp">
       <Filter>guichan</Filter>
     </ClCompile>
     <ClCompile Include="guichan\defaultfont.cpp">
@@ -147,6 +141,9 @@
     <ClCompile Include="guichan\ext\overlay.cpp">
       <Filter>guichan\ext</Filter>
     </ClCompile>
+    <ClCompile Include="guichan\basiccontainer.cpp">
+      <Filter>guichan\widgets</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="guichan\actionevent.hpp">
@@ -155,19 +152,10 @@
     <ClInclude Include="guichan\actionlistener.hpp">
       <Filter>guichan</Filter>
     </ClInclude>
-    <ClInclude Include="guichan\basiccontainer.hpp">
-      <Filter>guichan</Filter>
-    </ClInclude>
     <ClInclude Include="guichan\cliprectangle.hpp">
       <Filter>guichan</Filter>
     </ClInclude>
     <ClInclude Include="guichan\color.hpp">
-      <Filter>guichan</Filter>
-    </ClInclude>
-    <ClInclude Include="guichan\containerevent.hpp">
-      <Filter>guichan</Filter>
-    </ClInclude>
-    <ClInclude Include="guichan\containerlistener.hpp">
       <Filter>guichan</Filter>
     </ClInclude>
     <ClInclude Include="guichan\deathlistener.hpp">
@@ -317,6 +305,9 @@
     <ClInclude Include="alguichan.hpp" />
     <ClInclude Include="guichan\ext\overlay.hpp">
       <Filter>guichan\ext</Filter>
+    </ClInclude>
+    <ClInclude Include="guichan\basiccontainer.hpp">
+      <Filter>guichan\widgets</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

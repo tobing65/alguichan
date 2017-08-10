@@ -50,7 +50,6 @@
 #include <list>
 
 #include "guichan/basiccontainer.hpp"
-#include "guichan/containerlistener.hpp"
 #include "guichan/graphics.hpp"
 #include "guichan/platform.hpp"
 
@@ -166,24 +165,6 @@ namespace gcn
         virtual Widget* findWidgetById(const std::string &id);
 
         /**
-         * Adds a container listener to the container. When a widget is
-         * added or removed an event will be sent to all container 
-         * listeners of the container
-         *
-         * @param containerListener The container listener to add.
-         * @since 0.9.0
-         */
-        void addContainerListener(ContainerListener* containerListener);
-
-        /**
-         * Removes a container listener from the container.
-         *
-         * @param containerListener The container listener to remove.
-         * @since 0.9.0
-         */
-        void removeContainerListener(ContainerListener* containerListener);
-
-        /**
          * Returns the children of the container.
          *
          * @return The children of the container.
@@ -202,24 +183,6 @@ namespace gcn
 
     protected:
         /**
-         * Distributes a widget added container event to all container listeners
-         * of the container.
-         * 
-         * @param source The source widget of the event.
-         * @since 0.9.0
-         */
-        void distributeWidgetAddedEvent(Widget* source);
-
-        /**
-         * Distributes a widget removed container event to all container listeners
-         * of the container.
-         * 
-         * @param source The source widget of the event.
-         * @since 0.9.0
-         */
-        void distributeWidgetRemovedEvent(Widget* source);
-
-        /**
          * True if the container is opaque, false otherwise.
          */
         bool mOpaque;
@@ -228,21 +191,6 @@ namespace gcn
         * The background image to display.
         */
         const Image* mBackgroundImage;
-
-        /**
-         * Typdef.
-         */ 
-        typedef std::list<ContainerListener*> ContainerListenerList;
-        
-        /**
-         * The container listeners of the container.
-         */
-        ContainerListenerList mContainerListeners;
-
-        /**
-         * Typedef.
-         */
-        typedef ContainerListenerList::iterator ContainerListenerIterator;
     };
 }
 

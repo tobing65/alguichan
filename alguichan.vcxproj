@@ -158,7 +158,6 @@
     <ClCompile Include="guichan\basiccontainer.cpp" />
     <ClCompile Include="guichan\cliprectangle.cpp" />
     <ClCompile Include="guichan\color.cpp" />
-    <ClCompile Include="guichan\containerevent.cpp" />
     <ClCompile Include="guichan\defaultfont.cpp" />
     <ClCompile Include="guichan\defaultstyle.cpp" />
     <ClCompile Include="guichan\event.cpp" />
@@ -206,8 +205,6 @@
     <ClInclude Include="guichan\basiccontainer.hpp" />
     <ClInclude Include="guichan\cliprectangle.hpp" />
     <ClInclude Include="guichan\color.hpp" />
-    <ClInclude Include="guichan\containerevent.hpp" />
-    <ClInclude Include="guichan\containerlistener.hpp" />
     <ClInclude Include="guichan\deathlistener.hpp" />
     <ClInclude Include="guichan\defaultfont.hpp" />
     <ClInclude Include="guichan\defaultstyle.hpp" />
