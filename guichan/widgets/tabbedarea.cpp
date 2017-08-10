@@ -64,7 +64,7 @@
 namespace gcn
 {
     TabbedArea::TabbedArea()
-      : mSelectedTab(NULL)
+      : mSelectedTab(nullptr)
       , mOpaque(false)
     {
         setFocusable(true);
@@ -119,7 +119,7 @@ namespace gcn
         mTabContainer->add(tab);
         mTabs.push_back(std::pair<Tab*, Widget*>(tab, widget));
 
-        if (mSelectedTab == NULL)
+        if (!mSelectedTab)
         {
             setSelectedTab(tab);
         }
@@ -186,7 +186,7 @@ namespace gcn
 
         if (tabIndexToBeSelected == -1)
         {
-            mSelectedTab = NULL;
+            mSelectedTab = nullptr;
             mWidgetContainer->clear();
         }
         else
@@ -355,7 +355,7 @@ namespace gcn
 
         // If a tab is selected, remove the line right underneath
         // the selected tab.
-        if (mSelectedTab != NULL)
+        if (mSelectedTab)
         {
             graphics->setColor(getBaseColor());
             graphics->drawLine(mSelectedTab->getX() + 1,
@@ -496,7 +496,7 @@ namespace gcn
             Widget* widget = mTabContainer->getWidgetAt(mouseEvent.getX(), mouseEvent.getY());
             Tab* tab = dynamic_cast<Tab*>(widget);
 
-            if (tab != NULL)
+            if (tab)
             {
                 setSelectedTab(tab);
             }
@@ -516,7 +516,7 @@ namespace gcn
         Widget* source = event.getSource();
         Tab* tab = dynamic_cast<Tab*>(source);
 
-        if (tab != NULL)
+        if (tab)
         {
             removeTab(tab);
         }
@@ -531,7 +531,7 @@ namespace gcn
         Widget* source = actionEvent.getSource();
         Tab* tab = dynamic_cast<Tab*>(source);
 
-        if (tab == NULL)
+        if (!tab)
         {
             throw GCN_EXCEPTION("Received an action from a widget that's not a tab!");
         }

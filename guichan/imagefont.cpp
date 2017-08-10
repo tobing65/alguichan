@@ -111,7 +111,7 @@ namespace gcn
                          const std::string& glyphs)
     {
         mFilename = "Image*";
-        if (image == NULL)
+        if (!image)
         {
                 GCN_EXCEPTION("Font image is NULL");
         }

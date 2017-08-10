@@ -53,7 +53,7 @@ Image* Allegro5ImageLoader::load(const std::string& filename, bool convertToDisp
 {
 	ALLEGRO_BITMAP *bmp = loadBitmap(filename);
 
-	if (bmp == NULL)
+	if (!bmp)
 	{
 		throw GCN_EXCEPTION(std::string("Unable to load: ") + filename);
 	}

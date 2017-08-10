@@ -126,12 +126,12 @@ namespace gcn
 
     ScrollArea::~ScrollArea()
     {
-        setContent(NULL);
+        setContent(nullptr);
     }
 
     void ScrollArea::setContent(Widget* widget)
     {
-        if (widget != NULL)
+        if (widget)
         {
             clear();
             add(widget);
@@ -150,7 +150,7 @@ namespace gcn
         if (mWidgets.size() > 0)
             return *mWidgets.begin();
 
-        return NULL;
+        return nullptr;
     }
 
     void ScrollArea::setHorizontalScrollPolicy(ScrollPolicy hPolicy)
@@ -227,7 +227,7 @@ namespace gcn
     {
         checkPolicies();
 
-        if (getContent() == NULL)
+        if (!getContent())
             return 0;
 
         int value = getContent()->getWidth() - getChildrenArea().width +
@@ -243,7 +243,7 @@ namespace gcn
     {
         checkPolicies();
 
-        if (getContent() == NULL)
+        if (!getContent())
             return 0;
 
         int value;
@@ -747,7 +747,7 @@ namespace gcn
         setVerticalScrollAmount(getVerticalScrollAmount());
         setHorizontalScrollAmount(getHorizontalScrollAmount());
 
-        if (getContent() != NULL)
+        if (getContent())
         {
             getContent()->setPosition(-mHScroll + getContent()->getFrameSize(),
                                       -mVScroll + getContent()->getFrameSize());
@@ -1056,7 +1056,7 @@ namespace gcn
         if (getChildrenArea().isContaining(x, y))
             return getContent();
 
-        return NULL;
+        return nullptr;
     }
 
     void ScrollArea::mouseWheelMovedUp(MouseEvent& mouseEvent)

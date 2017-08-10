@@ -403,11 +403,11 @@ namespace gcn
 
         else if(key.getValue() == Key::PageUp)
         {
-            Widget* par = getParent();
+            Widget* parent = getParent();
 
-            if (par != NULL)
+            if (parent)
             {
-                int rowsPerPage = par->getChildrenArea().height / getFont()->getHeight();
+                int rowsPerPage = parent->getChildrenArea().height / getFont()->getHeight();
                 mCaretRow -= rowsPerPage;
 
                 if (mCaretRow < 0)
@@ -419,11 +419,11 @@ namespace gcn
 
         else if(key.getValue() == Key::PageDown)
         {
-            Widget* par = getParent();
+            Widget* parent = getParent();
 
-            if (par != NULL)
+            if (parent)
             {
-                int rowsPerPage = par->getChildrenArea().height / getFont()->getHeight();
+                int rowsPerPage = parent->getChildrenArea().height / getFont()->getHeight();
                 mCaretRow += rowsPerPage;
 
                 if (mCaretRow >= (int)mTextRows.size())

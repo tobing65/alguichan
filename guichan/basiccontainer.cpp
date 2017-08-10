@@ -197,7 +197,7 @@ namespace gcn
         const Rectangle r = getChildrenArea();
 
         if (!r.isContaining(x, y))
-            return NULL;
+            return nullptr;
 
         x -= r.x;
         y -= r.y;
@@ -210,27 +210,27 @@ namespace gcn
             }
         }
 
-        return NULL;
+        return nullptr;
     }
 
     void BasicContainer::logic()
     {
         mLogicIsProcessing = true;
-        mWidgetToBeMovedToTheTop = NULL;
-        mWidgetToBeMovedToTheBottom = NULL;
+        mWidgetToBeMovedToTheTop = nullptr;
+        mWidgetToBeMovedToTheBottom = nullptr;
         logicChildren();
         mLogicIsProcessing = false;
 
-        if (mWidgetToBeMovedToTheTop != NULL)
+        if (mWidgetToBeMovedToTheTop)
         {
             _moveToTopWithNoChecks(mWidgetToBeMovedToTheTop);
-            mWidgetToBeMovedToTheTop = NULL;
+            mWidgetToBeMovedToTheTop = nullptr;
         }
 
-        if (mWidgetToBeMovedToTheBottom != NULL)
+        if (mWidgetToBeMovedToTheBottom)
         {
             _moveToTopWithNoChecks(mWidgetToBeMovedToTheBottom);
-            mWidgetToBeMovedToTheBottom = NULL;
+            mWidgetToBeMovedToTheBottom = nullptr;
         }
     }
 
@@ -238,7 +238,7 @@ namespace gcn
     {
         Widget::_setFocusHandler(focusHandler);
 
-        if (mInternalFocusHandler != NULL)
+        if (mInternalFocusHandler)
         {
             return;
         }
@@ -254,7 +254,7 @@ namespace gcn
     {
         mWidgets.push_back(widget);
 
-        if (mInternalFocusHandler == NULL)
+        if (!mInternalFocusHandler)
         {
             widget->_setFocusHandler(_getFocusHandler());
         }
@@ -275,8 +275,8 @@ namespace gcn
             if (*iter == widget)
             {
                 mWidgets.erase(iter);
-                widget->_setFocusHandler(NULL);
-                widget->_setParent(NULL);
+                widget->_setFocusHandler(nullptr);
+                widget->_setParent(nullptr);
                 widget->removeDeathListener(this);
                 return;
             }
@@ -291,8 +291,8 @@ namespace gcn
 
         for (iter = mWidgets.begin(); iter != mWidgets.end(); iter++)
         {
-            (*iter)->_setFocusHandler(NULL);
-            (*iter)->_setParent(NULL);
+            (*iter)->_setFocusHandler(nullptr);
+            (*iter)->_setParent(nullptr);
             (*iter)->removeDeathListener(this);
         }
 
@@ -375,7 +375,7 @@ namespace gcn
         WidgetListIterator iter;
         for (iter = mWidgets.begin(); iter != mWidgets.end(); iter++)
         {
-            if (mInternalFocusHandler == NULL)
+            if (!mInternalFocusHandler)
             {
                 (*iter)->_setFocusHandler(_getFocusHandler());
             }

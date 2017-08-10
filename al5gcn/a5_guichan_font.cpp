@@ -54,7 +54,7 @@ Allegro5Font::Allegro5Font(ALLEGRO_FONT* font)
 : mAutoFree(false)
 , mAllegroFont(font)
 {
-	if (font == NULL)
+	if (!font)
 	{
 		throw GCN_EXCEPTION("Allegro font is not usable. Have you forgotten to load it?");
 	}
@@ -68,7 +68,7 @@ Allegro5Font::Allegro5Font(const std::string& filename, int w, int h)
 , mAllegroFont(al_load_ttf_font(filename.c_str(), h, 0))
 #endif
 {
-	if (mAllegroFont == NULL)
+	if (!mAllegroFont)
 	{
 		throw GCN_EXCEPTION("Unable to load Allegro font from file.");
 	}
@@ -78,12 +78,12 @@ Allegro5Font::~Allegro5Font()
 {
 	if (mAutoFree)
 	{
-		if (mAllegroFont != NULL)
+		if (mAllegroFont)
 		{
 			al_destroy_font(mAllegroFont);
 		}
 
-		mAllegroFont = NULL;
+		mAllegroFont = nullptr;
 	}
 }
 
