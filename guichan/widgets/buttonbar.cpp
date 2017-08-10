@@ -184,8 +184,12 @@ void ButtonVBar::adjustSizeAndButtons(ButtonBarAdjustMode show_invisible_and_dis
         if(max_width < cur_width)
             max_width = cur_width;
         pw->setPosition(border_w_spacing_,cur_y+border_h_spacing_);
-        cur_y += pw->getHeight();
-        cur_y += int_spacing_;
+        const int cur_height = pw->getHeight();
+        if(cur_height > 0)
+        {
+            cur_y += cur_height;
+            cur_y += int_spacing_;
+        }
     }
     if(cur_y > 0)
     {
@@ -308,8 +312,12 @@ void ButtonHBar::adjustSizeAndButtons(ButtonBarAdjustMode show_invisible_and_dis
         if(max_height < cur_height)
             max_height = cur_height;
         pw->setPosition(cur_x+border_w_spacing_, border_h_spacing_);
-        cur_x += int_spacing_;
-        cur_x += pw->getWidth();
+        const int cur_width = pw->getWidth();
+        if(cur_width > 0)
+        {
+            cur_x += int_spacing_;
+            cur_x += cur_width;
+        }
     }
     if(cur_x > 0)
     {
