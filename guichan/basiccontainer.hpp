@@ -186,17 +186,6 @@ namespace gcn
         virtual void logicChildren();
 
         /**
-         * Finds a widget given an id. This function can be useful
-         * when implementing a GUI generator for Guichan, such as
-         * the ability to create a Guichan GUI from an XML file.
-         *
-         * @param id The id to find a widget by.
-         * @return The widget with the corrosponding id, 
-                   NULL of no widget is found.
-         */
-        virtual Widget* findWidgetById(const std::string& id);
-
-        /**
          * Resizes the BasicContainer to fit it's content exactly.
          */
         void resizeToContent();

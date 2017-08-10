@@ -386,32 +386,6 @@ namespace gcn
         }
     }
 
-    Widget* BasicContainer::findWidgetById(const std::string& id)
-    {
-        WidgetListIterator iter;
-        for (iter = mWidgets.begin(); iter != mWidgets.end(); iter++)
-        {
-            if ((*iter)->getId() == id)
-            {
-                return (*iter);
-            }
-            
-            BasicContainer *basicContainer = dynamic_cast<BasicContainer*>(*iter);
-            
-            if (basicContainer != NULL)
-            {
-                Widget *widget = basicContainer->findWidgetById(id);
-                
-                if (widget != NULL)
-                {
-                    return widget;
-                }
-            }
-        }
-
-        return NULL;
-    }
-
     void BasicContainer::_moveToTopWithNoChecks(Widget* widget)
     {
         mWidgets.remove(widget);

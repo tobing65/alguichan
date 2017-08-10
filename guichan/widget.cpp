@@ -645,16 +645,6 @@ namespace gcn
         mInternalFocusHandler = focusHandler;
     }
 
-    void Widget::setId(const std::string& id)
-    {
-        mId = id;
-    }
-
-    const std::string& Widget::getId() const
-    {
-        return mId;
-    }
-
     void Widget::distributeResizedEvent()
     {
         WidgetListenerIterator iter;

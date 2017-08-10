@@ -141,8 +141,7 @@ namespace gcn
          * Removes a widget from the Container.
          *
          * @param widget The widget to remove.
-         * @throws Exception when the widget has not been added to the
-         *                   container.
+         * @throws Exception when the widget has not been added to the container.
          * @see add, clear
          */
         virtual void remove(Widget* widget);
@@ -153,16 +152,6 @@ namespace gcn
          * @see add, remove
          */
         virtual void clear();
-
-        /**
-         * Finds a widget given an id.
-         *
-         * @param id The id to find a widget by.
-         * @return A widget with a corrosponding id, NULL if no widget 
-         *         is found.
-         * @see Widget::setId
-         */
-        virtual Widget* findWidgetById(const std::string &id);
 
         /**
          * Returns the children of the container.
