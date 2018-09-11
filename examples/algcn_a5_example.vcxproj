@@ -149,7 +149,7 @@
     <Link>
       <AdditionalDependencies>dinput8.lib;ddraw.lib;dxguid.lib;winmm.lib;dsound.lib;opengl32.lib;glu32.lib;psapi.lib;shlwapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(OutDir)$(TargetName).exe</OutputFile>
-      <AdditionalLibraryDirectories>\dev\ext\dxsdk0908\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>\dev\ext\lib;\dev\ext\dxsdk0908\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
     </Link>
@@ -194,7 +194,7 @@
     </ClCompile>
     <Link>
       <AdditionalDependencies>dinput8.lib;ddraw.lib;dxguid.lib;winmm.lib;dsound.lib;opengl32.lib;glu32.lib;psapi.lib;shlwapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>\dev\ext\dxsdk0908\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>\dev\ext\lib;\dev\ext\dxsdk0908\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <SubSystem>Windows</SubSystem>
       <OutputFile>$(OutDir)$(TargetName).exe</OutputFile>
     </Link>
