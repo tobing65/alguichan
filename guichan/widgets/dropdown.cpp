@@ -99,7 +99,7 @@ namespace gcn
 
         if (mListBox->getSelected() < 0)
         {
-            mListBox->setSelected(0);
+            mListBox->setSelected(-1);
         }
 
         addMouseListener(this);
@@ -274,7 +274,7 @@ namespace gcn
 
     void DropDown::setSelected(int selected)
     {
-        if (selected >= 0)
+        //if (selected >= 0)
         {
             mListBox->setSelected(selected);
         }
@@ -387,7 +387,7 @@ namespace gcn
 
         if (mListBox->getSelected() < 0)
         {
-            mListBox->setSelected(0);
+            mListBox->setSelected(-1);
         }
 
         adjustHeight();
