@@ -162,12 +162,22 @@ namespace gcn
             graphics->setColor(getForegroundColor());
         }
 
-        if(mListBox->getListModel() && mListBox->getSelected() >= 0)
+        if(mListBox->getListModel())
         {
-            graphics->setColor(getForegroundColor());
-            graphics->setFont(getFont());
+            if(mListBox->getSelected() >= 0)
+            {
+                graphics->setColor(getForegroundColor());
+                graphics->setFont(getFont());
 
-            graphics->drawText(mListBox->getListModel()->getElementAt(mListBox->getSelected()), 1, 0);
+                graphics->drawText(mListBox->getListModel()->getElementAt(mListBox->getSelected()), 1, 0);
+            }
+            else if(!mUnselectedString.empty())
+            {
+                graphics->setColor(getForegroundColor());
+                graphics->setFont(getFont());
+
+                graphics->drawText(mUnselectedString, 1, 0);
+            }
         }
         
         // Push a clip area before drawing the button.
@@ -265,6 +275,14 @@ namespace gcn
                                     dy - i + offset);
             }
         }
+    }
+
+    void DropDown::setUnselectedString(const char* unselected_string)
+    {
+        if(!unselected_string)
+            mUnselectedString.clear();
+        else
+            mUnselectedString.assign(unselected_string);
     }
 
     int DropDown::getSelected() const

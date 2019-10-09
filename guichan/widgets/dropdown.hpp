@@ -104,6 +104,11 @@ namespace gcn {
         virtual ~DropDown();
 
         /**
+         * Set the string to display, when nothing is selected.
+         */
+        void setUnselectedString(const char* unselected_string);
+
+        /**
          * Gets the selected item as an index in the list model.
          *
          * @return the selected item as an index in the list model.
@@ -114,6 +119,8 @@ namespace gcn {
         /**
          * Sets the selected item. The selected item is represented by
          * an index from the list model.
+
+         * If you select -1, then nothing is selected.
          *
          * @param selected the selected item as an index from the list model.
          * @see getSelected
@@ -265,6 +272,8 @@ namespace gcn {
          * part of the drop down was clicked on a mouse click.
          */
         int mFoldedUpHeight;
+
+        std::string mUnselectedString;
 
         /**
          * The scroll area used.

@@ -92,6 +92,7 @@ int main(int argc, char **argv)
     listBox.setWidth(80);
     gcn::DropDown dropDown(&demoListModel);
     dropDown.setWidth(110);
+    dropDown.setUnselectedString("select me");
     gcn::CheckBox checkBox1("Checkbox 1");
     gcn::CheckBox checkBox2("Checkbox 2");
     gcn::RadioButton radioButton1("RadioButton 1", "radiogroup", true);
